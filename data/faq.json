@@ -1,0 +1,32 @@
+[
+  {
+    "id": "billing-pending",
+    "title": "Pending card authorizations",
+    "content": "A pending card authorization is not proof of a settled charge. Repeated upgrade attempts can create multiple holds. A billing specialist must verify payment records before discussing reversals or refunds. Do not ask for full card numbers or promise a release date."
+  },
+  {
+    "id": "billing-access",
+    "title": "Paid upgrade without Pro access",
+    "content": "If an upgrade appears paid but the account remains Free, collect the account email and a payment reference via the approved support channel. Billing must reconcile payment and entitlement records. Do not ask the customer to pay again or claim access has been restored without verification."
+  },
+  {
+    "id": "availability",
+    "title": "Multiple users cannot access the service",
+    "content": "Multiple browsers or users seeing server errors can indicate an incident. An operational status page does not rule out a regional failure or a newly developing incident. Escalate the reported impact and record the affected region; do not claim a confirmed root cause or recovery time."
+  },
+  {
+    "id": "appearance",
+    "title": "Theme settings",
+    "content": "In this fictional product, Settings > Appearance offers Light and System Default. System Default should follow the operating system theme. If it does not, collect app version and OS details and route the unresolved bug to engineering. Do not invent a separate Dark toggle."
+  },
+  {
+    "id": "theme-schedule",
+    "title": "Scheduled dark mode",
+    "content": "This fictional product has no built-in theme scheduler. System Default follows the OS appearance; OS scheduling may be an alternative only if System Default actually works. Do not promise a release date or ignore an existing theme bug."
+  },
+  {
+    "id": "export",
+    "title": "Export formats",
+    "content": "The fictional Pro plan supports PDF and CSV export through File > Export. If paid access is missing, billing must first verify the entitlement; an export instruction alone does not resolve the billing issue."
+  }
+]
