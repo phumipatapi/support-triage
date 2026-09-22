@@ -1,13 +1,18 @@
 import type { AssessmentData, DecisionData } from "./schemas";
 
-export const POLICY_VERSION = "policy-v1";
-// These are conservative initial thresholds, NOT calibrated accuracy guarantees.
-export function decide(a: AssessmentData): DecisionData {
-  const knowledge = a.faq_scores
+export const POLICY_VERSION = "policy-v2";
+export function selectKnowledge(
+  scores: AssessmentData["faq_scores"],
+): string[] {
+  return scores
     .filter((f) => f.relevance >= 0.75)
     .sort((a, b) => b.relevance - a.relevance)
     .slice(0, 3)
     .map((f) => f.id);
+}
+// These are conservative initial thresholds, NOT calibrated accuracy guarantees.
+export function decide(a: AssessmentData): DecisionData {
+  const knowledge = selectKnowledge(a.faq_scores);
   const incident =
     a.ongoing_outage >= 0.8 &&
     a.multiple_users >= 0.8 &&

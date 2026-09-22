@@ -121,3 +121,9 @@ Structured stdout logs carry request/run/audit IDs. Detailed input, tool argumen
 - [OpenAI structured outputs](https://developers.openai.com/api/docs/guides/structured-outputs)
 
 Contract implementations were checked against these docs. HTTP fixture tests validate our adapters; they do not establish live account access or model quality.
+
+### TypeSafe skill review (2026-09-22)
+
+The official skill is installed in `.agents/skills/typesafe-ai`; future project work follows `AGENTS.md`. See `JEV-REVIEW.md` for the review and regression coverage. Jev still uses one call: five Choices, seven impact/presence Nouls and two Nouls per FAQ (usefulness and complete answer support). FAQ scores are probabilities of useful guidance, not graded relevance. Only sufficiency from a selected document can authorize an automatic answer. Questions needing a combination of documents may conservatively escalate.
+
+For Jev, `classification_confidence` is urgency Choice confidence, not the minimum over unrelated descriptive fields or a probability that the workflow is correct. On TypeSafe rate-limit/overload, the API returns a `Retry-After` hint; wait before retrying the same payload/key and increase backoff for repeated failures. No silent provider switch or hidden retry was added.

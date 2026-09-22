@@ -1,4 +1,4 @@
-export const PROMPT_VERSION = "triage-v1";
+export const PROMPT_VERSION = "triage-v2";
 
 // Preserve the whole thread: neither first-message anchoring nor last-message-only triage.
 // Model output is advisory. Actual permissions and side effects live in policy/tools.

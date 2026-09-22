@@ -11,7 +11,13 @@ import {
   type DecisionData,
 } from "./schemas";
 import { decide } from "./policy";
-import { faqs, validateAssessment, type Models } from "./models";
+import {
+  buildQuestions,
+  faqs,
+  validateAssessment,
+  type Models,
+} from "./models";
+import { PROMPT_VERSION } from "./prompts";
 import {
   executeIncident,
   toolDefinitions,
@@ -76,6 +82,12 @@ export class TriageService {
         this.store.audit(run.id, "model.input", {
           conversation: state,
           faq: faqs,
+          ...(this.models.name === "jev"
+            ? {
+                model_request_questions: buildQuestions(),
+                prompt_version: PROMPT_VERSION,
+              }
+            : {}),
         });
         const result = await this.models.assess(state);
         this.store.assertOwner(run);
@@ -130,6 +142,7 @@ export class TriageService {
           ? error.message
           : "Processing failed. Retry the same payload and Idempotency-Key; completed side effects will be reused.",
         {
+          ...(error instanceof AppError ? error.details : {}),
           conversation_id: run.conversation_id,
           run_id: run.id,
           retryable: true,

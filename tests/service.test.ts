@@ -10,6 +10,7 @@ import { readConfig } from "../lib/config";
 import { MockIncidentProvider } from "../lib/tools";
 import { TriageService } from "../lib/triage";
 import { handle } from "../lib/http";
+import { AppError } from "../lib/errors";
 
 const cleanup: (() => void)[] = [];
 afterEach(() => {
@@ -227,6 +228,34 @@ describe("durable workflow", () => {
 });
 
 describe("HTTP contract", () => {
+  it("preserves the provider backoff hint through the run and HTTP boundary", async () => {
+    const { service } = setup("normal", (m) => ({
+      ...m,
+      assess: async () => {
+        throw new AppError(503, "provider_unavailable", "Rate limited", {
+          retry_after_seconds: 7,
+        });
+      },
+    }));
+    const response = await handle(
+      new Request("http://localhost/api/tickets", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Idempotency-Key": "limited",
+        },
+        body: JSON.stringify(outage),
+      }),
+      undefined,
+      () => service,
+    );
+    expect(response.status).toBe(503);
+    expect(response.headers.get("Retry-After")).toBe("7");
+    expect((await response.json()).error.details).toMatchObject({
+      retry_after_seconds: 7,
+      retryable: true,
+    });
+  });
   it("validates media, JSON, fields, keys and missing conversations", async () => {
     const { service } = setup();
     const request = (

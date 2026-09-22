@@ -92,6 +92,7 @@ export async function handle(
         ...e.details,
       }),
     );
+    const retryAfter = e.details?.retry_after_seconds;
     return Response.json(
       {
         error: {
@@ -101,7 +102,15 @@ export async function handle(
           details: e.details,
         },
       },
-      { status: e.status, headers },
+      {
+        status: e.status,
+        headers: {
+          ...headers,
+          ...(typeof retryAfter === "number"
+            ? { "Retry-After": String(retryAfter) }
+            : {}),
+        },
+      },
     );
   }
 }

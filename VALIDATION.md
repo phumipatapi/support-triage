@@ -9,3 +9,5 @@ Environment: Windows, Node.js 22.23.1, npm 10.9.0. Validated locally on 2026-09-
 - API credentials were not available during implementation. No live Jev or GPT calls were made; live provider availability, Thai understanding, grounding and cost remain unverified. Run `npm run eval -- --live` with configured credentials to measure them.
 
 Commands: `npm run check`, `npm run smoke`, `npm run eval`. For exact current results, rerun these commands; generated eval reports are deliberately excluded from Git.
+
+2026-09-22: Reviewed Jev using the installed official TypeSafe skill and live API/primitives/cookbook docs. Added tests for branch-specific confidence, answer sufficiency on selected FAQ, Choice consistency and rate-limit backoff. See `JEV-REVIEW.md`. Live credentials remain unavailable.
