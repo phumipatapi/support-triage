@@ -69,11 +69,17 @@ export async function glmReply(
             role: "system",
             content:
               REPLY_SYSTEM +
+              '\nWrite at most 100 words (Thai: at most 600 characters). You are a triage assistant advising the human operator, not an agent who has contacted another team. Use recommendation language: "I recommend sending this to billing" / "แนะนำให้เจ้าหน้าที่ส่งเรื่องให้ทีมตรวจสอบ". Never say "I am routing", "I have escalated", "ส่งเรื่องแล้ว", "ทีมงานกำลังตรวจสอบ", or promise a specialist will follow up. Bank charges are customer reports: say they MAY be authorizations, never that they ARE pending/settled without verified records. Do not copy internal decision reasons verbatim. execution_facts are authoritative about what has actually happened.' +
               ' Return exactly one JSON object with keys "reply" (string) and "citation_ids" (array of FAQ ID strings). No markdown fences or additional keys.',
           },
           {
             role: "user",
-            content: JSON.stringify({ ...input, faq: selected }),
+            content: JSON.stringify({
+              ...input,
+              decision:{...input.decision,reasons:undefined},
+              execution_facts:{team_contacted:false,payment_records_verified:false,refund_issued:false,account_changed:false,incident_result:input.incident},
+              faq: selected,
+            }),
           },
         ],
       }),
@@ -132,6 +138,7 @@ export async function glmReply(
       response_id: completion.id,
       usage: completion.usage,
       prompt_version: PROMPT_VERSION,
+      reply_prompt_version: "glm-reply-v2",
       latency_ms: Math.round(performance.now() - started),
     },
   };

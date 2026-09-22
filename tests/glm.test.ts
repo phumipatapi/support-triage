@@ -83,6 +83,8 @@ describe("GLM General API reply adapter", () => {
       thinking: { type: "disabled" },
     });
     expect(body.tools).toBeUndefined();
+    expect(JSON.parse(body.messages[1].content).execution_facts).toMatchObject({team_contacted:false,payment_records_verified:false,refund_issued:false});
+    expect(JSON.parse(body.messages[1].content).decision.reasons).toBeUndefined();
     expect(
       JSON.parse(body.messages[1].content)
         .faq.map((f: { id: string }) => f.id)
