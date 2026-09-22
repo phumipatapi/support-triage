@@ -47,6 +47,22 @@ OPENAI_API_KEY=your-key
 
 This uses GPT for the same assessment contract and reply. No TypeSafe account is needed. Keys are server-only environment variables; `.env.local` and runtime data are ignored by Git. If no env file exists, provider defaults are OpenAI/OpenAI. The setup script deliberately selects mock mode for the first demo.
 
+### Jev + GLM (Z.AI General API)
+
+```dotenv
+DECISION_PROVIDER=jev
+REPLY_PROVIDER=glm
+TYPESAFE_API_KEY=your-jev-key
+GLM_API_KEY=your-zai-general-api-key
+GLM_MODEL=glm-4.7
+```
+
+Restart after changing `.env.local`. This pair does not need an OpenAI key. GLM only composes replies; Jev assessment, policy, persistence and incident deduplication are unchanged. The adapter uses the Z.AI **General API**, not Coding Plan: `https://api.z.ai/api/paas/v4/chat/completions`. The model is configurable; `glm-4.7` is the initial reply-writing default, not a claim of cheapest/best. GLM-5.3 uses low thinking; the default disables thinking to avoid unnecessary reasoning for reply composition.
+
+GLM JSON mode is followed by local schema and citation validation; it is not strict server-enforced JSON Schema. Truncated, malformed or unsupported responses fail the run safely, and retry reuses any completed incident. No hidden provider fallback or automatic retry. Run `npm run eval -- --live` after configuring credentials to test the full pair. **For submission, select OpenAI replies again to satisfy the assignment's GPT requirement.**
+
+Contract references: [Z.AI Chat Completion](https://docs.z.ai/api-reference/llm/chat-completion), [JSON output](https://docs.z.ai/guides/capabilities/struct-output).
+
 ## HTTP contract
 
 | Method | Path                               | Behavior                                                        |

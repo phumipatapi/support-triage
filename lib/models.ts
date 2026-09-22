@@ -12,6 +12,7 @@ import { TRIAGE_SYSTEM, REPLY_SYSTEM, PROMPT_VERSION } from "./prompts";
 import type { AppConfig } from "./config";
 import { AppError } from "./errors";
 import { selectKnowledge } from "./policy";
+import { glmReply } from "./glm";
 
 export { faqs };
 export type ModelResult = {
@@ -355,6 +356,8 @@ export function createModels(
     },
     async reply(input) {
       if (config.REPLY_PROVIDER === "mock") return mockReply(input);
+      if (config.REPLY_PROVIDER === "glm")
+        return glmReply(config, input, fetcher);
       const started = performance.now();
       const selected = faqs.filter((f) =>
         input.decision.knowledge_ids.includes(f.id),

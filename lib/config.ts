@@ -2,7 +2,9 @@ import { z } from "zod";
 
 const Config = z.object({
   DECISION_PROVIDER: z.enum(["mock", "jev", "openai"]).default("openai"),
-  REPLY_PROVIDER: z.enum(["mock", "openai"]).default("openai"),
+  REPLY_PROVIDER: z.enum(["mock", "openai", "glm"]).default("openai"),
+  GLM_API_KEY: z.string().optional(),
+  GLM_MODEL: z.string().min(1).default("glm-4.7"),
   OPENAI_API_KEY: z.string().optional(),
   TYPESAFE_API_KEY: z.string().optional(),
   OPENAI_MODEL: z.string().min(1).default("gpt-4.1-mini"),
@@ -26,9 +28,11 @@ export function readConfig(
     throw new Error("OPENAI_API_KEY is required for the selected provider.");
   if (c.DECISION_PROVIDER === "jev" && !c.TYPESAFE_API_KEY)
     throw new Error("TYPESAFE_API_KEY is required for Jev.");
+  if (c.REPLY_PROVIDER === "glm" && !c.GLM_API_KEY)
+    throw new Error("GLM_API_KEY is required for GLM replies.");
   if (c.DECISION_PROVIDER !== "mock" && c.REPLY_PROVIDER === "mock")
     throw new Error(
-      "Live decisions require REPLY_PROVIDER=openai. Use mock/mock for offline runs.",
+      "Live decisions require REPLY_PROVIDER=openai or glm. Use mock/mock for offline runs.",
     );
   return c;
 }

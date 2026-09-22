@@ -33,6 +33,22 @@ OPENAI_API_KEY=ใส่คีย์ของคุณ
 
 ถ้าจะให้ผู้ตรวจรันด้วย OpenAI key อย่างเดียว เปลี่ยน `DECISION_PROVIDER=openai` และคง `REPLY_PROVIDER=openai`
 
+## ใช้ GLM แทน GPT สำหรับข้อความตอบ
+
+สำหรับคีย์ Z.AI API ปกติ ตั้งค่าใน `.env.local` ดังนี้:
+
+```dotenv
+DECISION_PROVIDER=jev
+REPLY_PROVIDER=glm
+TYPESAFE_API_KEY=คีย์ Jev เดิมของคุณ
+GLM_API_KEY=คีย์ Z.AI ของคุณ
+GLM_MODEL=glm-4.7
+```
+
+โหมดนี้ไม่ต้องใช้ OpenAI key หยุดแล้วเปิด server ใหม่ด้วย `npm run dev` เพื่อให้โหลดค่าใหม่ Jev ยังวิเคราะห์ ticket เหมือนเดิม ส่วน GLM เขียนข้อความตอบ การทดสอบจริงใช้ `npm run eval -- --live` และมีค่า API ตามผู้ให้บริการ
+
+เมื่อส่ง take-home ให้กลับมาใช้ GPT (`REPLY_PROVIDER=openai`) เพราะโจทย์ระบุให้ใช้โมเดล OpenAI
+
 ## ดูโค้ดตรงไหนก่อน
 
 1. `lib/triage.ts` — flow ตั้งแต่รับข้อความจนตอบ

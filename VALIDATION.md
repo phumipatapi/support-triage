@@ -11,3 +11,5 @@ Environment: Windows, Node.js 22.23.1, npm 10.9.0. Validated locally on 2026-09-
 Commands: `npm run check`, `npm run smoke`, `npm run eval`. For exact current results, rerun these commands; generated eval reports are deliberately excluded from Git.
 
 2026-09-22: Reviewed Jev using the installed official TypeSafe skill and live API/primitives/cookbook docs. Added tests for branch-specific confidence, answer sufficiency on selected FAQ, Choice consistency and rate-limit backoff. See `JEV-REVIEW.md`. Live credentials remain unavailable.
+
+Subsequent checks: a supplied Jev key successfully assessed all three sample tickets using `jev-1.13.0`; raw sanitized results are delivered separately in `jev-live-report.json`. This did not test generated replies or execute incidents. Added a Z.AI General API GLM reply adapter with fixture tests for credentials, wire format, JSON validation, citation restrictions, incomplete output and rate limits. GLM live quality remains unverified until a GLM key is configured.
