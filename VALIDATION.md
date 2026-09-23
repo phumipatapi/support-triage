@@ -12,6 +12,8 @@ Measured on **2026-09-23**, Windows, Node.js 22.23.1 / npm 10.9.0. This is a bou
 | `npm audit` | 0 reported vulnerabilities in runtime and development dependencies at this snapshot |
 | Write-up | Markdown and visually inspected two-page PDF contain the same content |
 
+A fresh local clone, with no credentials or existing dependencies, passed `npm ci`, `npm run check`, `npm run smoke` and `npm run eval`. The PDF's SHA-256 matched across the clone. Only Windows was executed; macOS/Linux instructions use the same Node entry points but were not run on those operating systems. The installed-key check found none of the three configured credentials in tracked files or Git objects; this is a bounded check, not a general secret-detection guarantee.
+
 The tests exercise classification policy, autonomy thresholds, provider schemas, role/language isolation, malformed HTTP, concurrency, payload/key conflicts, stale-worker ownership, durable replay, failed/unknown tool outcomes and incident retention on later turns. They also verify that a rejected draft can become a marked policy handoff, retains provider metadata in the audit, replays identically and does not repeat its incident or model call.
 
 The smoke test uses isolated temporary databases. It makes the mock incident provider commit before losing its acknowledgement, restarts the server, retries the same request, and observes one incident. It also closes/reopens the terminal client with a pending request and verifies same-key recovery. Setup preserves existing credentials and chooses OpenAI for an injected key; no live key is required for these checks.
