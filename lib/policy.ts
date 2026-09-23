@@ -1,6 +1,6 @@
 import type { AssessmentData, DecisionData } from "./schemas";
 
-export const POLICY_VERSION = "policy-v2";
+export const POLICY_VERSION = "policy-v3";
 export function selectKnowledge(
   scores: AssessmentData["faq_scores"],
 ): string[] {
@@ -22,6 +22,19 @@ export function decide(a: AssessmentData): DecisionData {
   let action: DecisionData["action"] = "escalate_to_human";
   let specialist: DecisionData["specialist"] = null;
   const reasons: string[] = [];
+  // Strong service-loss evidence with little evidence of multiple affected users
+  // is high priority. A free-standing critical label cannot supply missing scope.
+  if (
+    urgency === "critical" &&
+    a.ongoing_outage >= 0.8 &&
+    a.core_work_blocked >= 0.8 &&
+    a.multiple_users < 0.2
+  ) {
+    urgency = "high";
+    reasons.push(
+      "Service access is blocked, but multiple affected users are not established.",
+    );
+  }
   if (incident) {
     urgency = "critical";
     reasons.push(

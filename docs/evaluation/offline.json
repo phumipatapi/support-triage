@@ -1,0 +1,1103 @@
+{
+  "created_at": "2026-09-23T11:58:56.090Z",
+  "mode": "mock",
+  "reply_provider": "mock",
+  "interpretation": "OFFLINE MOCK BASELINE ONLY. This measures harness/policy behavior, NOT Jev/GPT quality.",
+  "total": 12,
+  "passed": 12,
+  "policy_fallback_turns": 0,
+  "urgency_accuracy": 1,
+  "action_accuracy": 1,
+  "language_accuracy": 1,
+  "incident_accuracy": 1,
+  "latency_ms": {
+    "p50": 2,
+    "p95": 13
+  },
+  "model_usage": [
+    {
+      "provider": "mock",
+      "model": "offline-keyword-stub",
+      "prompt_version": "triage-v3",
+      "latency_ms": 0
+    },
+    {
+      "provider": "mock",
+      "model": "template",
+      "prompt_version": "triage-v3"
+    },
+    {
+      "provider": "mock",
+      "model": "offline-keyword-stub",
+      "prompt_version": "triage-v3",
+      "latency_ms": 0
+    },
+    {
+      "provider": "mock",
+      "model": "template",
+      "prompt_version": "triage-v3"
+    },
+    {
+      "provider": "mock",
+      "model": "offline-keyword-stub",
+      "prompt_version": "triage-v3",
+      "latency_ms": 0
+    },
+    {
+      "provider": "mock",
+      "model": "template",
+      "prompt_version": "triage-v3"
+    },
+    {
+      "provider": "mock",
+      "model": "offline-keyword-stub",
+      "prompt_version": "triage-v3",
+      "latency_ms": 0
+    },
+    {
+      "provider": "mock",
+      "model": "template",
+      "prompt_version": "triage-v3"
+    },
+    {
+      "provider": "mock",
+      "model": "offline-keyword-stub",
+      "prompt_version": "triage-v3",
+      "latency_ms": 0
+    },
+    {
+      "provider": "mock",
+      "model": "template",
+      "prompt_version": "triage-v3"
+    },
+    {
+      "provider": "mock",
+      "model": "offline-keyword-stub",
+      "prompt_version": "triage-v3",
+      "latency_ms": 0
+    },
+    {
+      "provider": "mock",
+      "model": "template",
+      "prompt_version": "triage-v3"
+    },
+    {
+      "provider": "mock",
+      "model": "offline-keyword-stub",
+      "prompt_version": "triage-v3",
+      "latency_ms": 0
+    },
+    {
+      "provider": "mock",
+      "model": "template",
+      "prompt_version": "triage-v3"
+    },
+    {
+      "provider": "mock",
+      "model": "offline-keyword-stub",
+      "prompt_version": "triage-v3",
+      "latency_ms": 0
+    },
+    {
+      "provider": "mock",
+      "model": "template",
+      "prompt_version": "triage-v3"
+    },
+    {
+      "provider": "mock",
+      "model": "offline-keyword-stub",
+      "prompt_version": "triage-v3",
+      "latency_ms": 0
+    },
+    {
+      "provider": "mock",
+      "model": "template",
+      "prompt_version": "triage-v3"
+    },
+    {
+      "provider": "mock",
+      "model": "offline-keyword-stub",
+      "prompt_version": "triage-v3",
+      "latency_ms": 0
+    },
+    {
+      "provider": "mock",
+      "model": "template",
+      "prompt_version": "triage-v3"
+    },
+    {
+      "provider": "mock",
+      "model": "offline-keyword-stub",
+      "prompt_version": "triage-v3",
+      "latency_ms": 0
+    },
+    {
+      "provider": "mock",
+      "model": "template",
+      "prompt_version": "triage-v3"
+    },
+    {
+      "provider": "mock",
+      "model": "offline-keyword-stub",
+      "prompt_version": "triage-v3",
+      "latency_ms": 0
+    },
+    {
+      "provider": "mock",
+      "model": "template",
+      "prompt_version": "triage-v3"
+    },
+    {
+      "provider": "mock",
+      "model": "offline-keyword-stub",
+      "prompt_version": "triage-v3",
+      "latency_ms": 0
+    },
+    {
+      "provider": "mock",
+      "model": "template",
+      "prompt_version": "triage-v3"
+    },
+    {
+      "provider": "mock",
+      "model": "offline-keyword-stub",
+      "prompt_version": "triage-v3",
+      "latency_ms": 0
+    },
+    {
+      "provider": "mock",
+      "model": "template",
+      "prompt_version": "triage-v3"
+    },
+    {
+      "provider": "mock",
+      "model": "offline-keyword-stub",
+      "prompt_version": "triage-v3",
+      "latency_ms": 0
+    },
+    {
+      "provider": "mock",
+      "model": "template",
+      "prompt_version": "triage-v3"
+    }
+  ],
+  "results": [
+    {
+      "id": "billing-thread",
+      "passed": true,
+      "latency_ms": 7,
+      "checks": {
+        "urgency": true,
+        "action": true,
+        "language": true,
+        "incident": true,
+        "retrieval": true,
+        "no_financial_tools": true,
+        "reply_guards": true,
+        "customer_sentiment": true,
+        "workaround_prerequisite": true
+      },
+      "actual": {
+        "urgency": "high",
+        "extracted": {
+          "product_area": "billing",
+          "issue_type": "billing",
+          "sentiment": "angry",
+          "language": "en"
+        },
+        "action": "route_to_specialist",
+        "specialist": "billing",
+        "reasons": [
+          "Financial exposure requires billing verification; pending charges are not proof of settled payments. No financial action is authorized.",
+          "A near-term deadline and blocked work increase urgency."
+        ],
+        "knowledge_ids": [
+          "billing-pending",
+          "billing-access",
+          "export"
+        ],
+        "incident_allowed": false,
+        "tools_called": [
+          "search_knowledge_base"
+        ],
+        "policy_version": "policy-v3"
+      },
+      "turns": [
+        {
+          "reply": "[OFFLINE MOCK] I recommend human review of the unresolved issue. Payment status, root cause and resolution time have not been verified.",
+          "response_language": "en",
+          "reply_source": "mock",
+          "guards_passed": true,
+          "decision": {
+            "urgency": "high",
+            "extracted": {
+              "product_area": "billing",
+              "issue_type": "billing",
+              "sentiment": "angry",
+              "language": "en"
+            },
+            "action": "route_to_specialist",
+            "specialist": "billing",
+            "reasons": [
+              "Financial exposure requires billing verification; pending charges are not proof of settled payments. No financial action is authorized.",
+              "A near-term deadline and blocked work increase urgency."
+            ],
+            "knowledge_ids": [
+              "billing-pending",
+              "billing-access",
+              "export"
+            ],
+            "incident_allowed": false,
+            "tools_called": [
+              "search_knowledge_base"
+            ],
+            "policy_version": "policy-v3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "outage-th-thread",
+      "passed": true,
+      "latency_ms": 7,
+      "checks": {
+        "urgency": true,
+        "action": true,
+        "language": true,
+        "incident": true,
+        "retrieval": true,
+        "no_financial_tools": true,
+        "reply_guards": true,
+        "customer_sentiment": true,
+        "workaround_prerequisite": true
+      },
+      "actual": {
+        "urgency": "critical",
+        "extracted": {
+          "product_area": "availability",
+          "issue_type": "outage",
+          "sentiment": "angry",
+          "language": "th"
+        },
+        "action": "escalate_to_human",
+        "specialist": null,
+        "reasons": [
+          "Ongoing loss of core service reported by multiple users; open a simulated incident for human investigation."
+        ],
+        "knowledge_ids": [
+          "availability"
+        ],
+        "incident_allowed": true,
+        "tools_called": [
+          "search_knowledge_base",
+          "open_incident"
+        ],
+        "policy_version": "policy-v3"
+      },
+      "turns": [
+        {
+          "reply": "[OFFLINE MOCK] แนะนำให้เจ้าหน้าที่ส่งเคสนี้ให้ทีมที่เกี่ยวข้องตรวจสอบ ยังไม่ยืนยันสาเหตุหรือเวลาที่แก้ไขเสร็จ ผล incident จำลอง: {\"incident_id\":\"INC-89192135-efeb-4e13-a272-3d88d03efc43\",\"status\":\"open\",\"simulated\":true}",
+          "response_language": "th",
+          "reply_source": "mock",
+          "guards_passed": true,
+          "decision": {
+            "urgency": "critical",
+            "extracted": {
+              "product_area": "availability",
+              "issue_type": "outage",
+              "sentiment": "angry",
+              "language": "th"
+            },
+            "action": "escalate_to_human",
+            "specialist": null,
+            "reasons": [
+              "Ongoing loss of core service reported by multiple users; open a simulated incident for human investigation."
+            ],
+            "knowledge_ids": [
+              "availability"
+            ],
+            "incident_allowed": true,
+            "tools_called": [
+              "search_knowledge_base",
+              "open_incident"
+            ],
+            "policy_version": "policy-v3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "theme-bug-thread",
+      "passed": true,
+      "latency_ms": 2,
+      "checks": {
+        "urgency": true,
+        "action": true,
+        "language": true,
+        "incident": true,
+        "retrieval": true,
+        "no_financial_tools": true,
+        "reply_guards": true,
+        "customer_sentiment": true,
+        "workaround_prerequisite": true
+      },
+      "actual": {
+        "urgency": "medium",
+        "extracted": {
+          "product_area": "appearance",
+          "issue_type": "bug",
+          "sentiment": "frustrated",
+          "language": "en"
+        },
+        "action": "route_to_specialist",
+        "specialist": "engineering",
+        "reasons": [
+          "An unresolved bug needs investigation even when the latest message also asks for a feature."
+        ],
+        "knowledge_ids": [
+          "appearance",
+          "theme-schedule"
+        ],
+        "incident_allowed": false,
+        "tools_called": [
+          "search_knowledge_base"
+        ],
+        "policy_version": "policy-v3"
+      },
+      "turns": [
+        {
+          "reply": "[OFFLINE MOCK] I recommend human review of the unresolved issue. Payment status, root cause and resolution time have not been verified.",
+          "response_language": "en",
+          "reply_source": "mock",
+          "guards_passed": true,
+          "decision": {
+            "urgency": "medium",
+            "extracted": {
+              "product_area": "appearance",
+              "issue_type": "bug",
+              "sentiment": "frustrated",
+              "language": "en"
+            },
+            "action": "route_to_specialist",
+            "specialist": "engineering",
+            "reasons": [
+              "An unresolved bug needs investigation even when the latest message also asks for a feature."
+            ],
+            "knowledge_ids": [
+              "appearance",
+              "theme-schedule"
+            ],
+            "incident_allowed": false,
+            "tools_called": [
+              "search_knowledge_base"
+            ],
+            "policy_version": "policy-v3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "simple-theme",
+      "passed": true,
+      "latency_ms": 2,
+      "checks": {
+        "urgency": true,
+        "action": true,
+        "language": true,
+        "incident": true,
+        "retrieval": true,
+        "no_financial_tools": true,
+        "reply_guards": true,
+        "customer_sentiment": true,
+        "workaround_prerequisite": true
+      },
+      "actual": {
+        "urgency": "low",
+        "extracted": {
+          "product_area": "appearance",
+          "issue_type": "how_to",
+          "sentiment": "neutral",
+          "language": "en"
+        },
+        "action": "auto_respond",
+        "specialist": null,
+        "reasons": [
+          "Relevant FAQ appears sufficient for a low-risk informational answer."
+        ],
+        "knowledge_ids": [
+          "appearance",
+          "theme-schedule"
+        ],
+        "incident_allowed": false,
+        "tools_called": [
+          "search_knowledge_base"
+        ],
+        "policy_version": "policy-v3"
+      },
+      "turns": [
+        {
+          "reply": "[OFFLINE MOCK] Relevant reference: In this product, Settings > Appearance offers Light and System Default. System Default should follow the operating system theme. If it does not, collect app version and OS details and route the unresolved bug to engineering. Do not invent a separate Dark toggle. This product has no built-in theme scheduler. System Default follows the OS appearance; OS scheduling may be an alternative only if System Default actually works. Do not promise a release date or ignore an existing theme bug.",
+          "response_language": "en",
+          "reply_source": "mock",
+          "guards_passed": true,
+          "decision": {
+            "urgency": "low",
+            "extracted": {
+              "product_area": "appearance",
+              "issue_type": "how_to",
+              "sentiment": "neutral",
+              "language": "en"
+            },
+            "action": "auto_respond",
+            "specialist": null,
+            "reasons": [
+              "Relevant FAQ appears sufficient for a low-risk informational answer."
+            ],
+            "knowledge_ids": [
+              "appearance",
+              "theme-schedule"
+            ],
+            "incident_allowed": false,
+            "tools_called": [
+              "search_knowledge_base"
+            ],
+            "policy_version": "policy-v3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "thai-theme",
+      "passed": true,
+      "latency_ms": 2,
+      "checks": {
+        "urgency": true,
+        "action": true,
+        "language": true,
+        "incident": true,
+        "retrieval": true,
+        "no_financial_tools": true,
+        "reply_guards": true,
+        "customer_sentiment": true,
+        "workaround_prerequisite": true
+      },
+      "actual": {
+        "urgency": "low",
+        "extracted": {
+          "product_area": "appearance",
+          "issue_type": "how_to",
+          "sentiment": "neutral",
+          "language": "th"
+        },
+        "action": "auto_respond",
+        "specialist": null,
+        "reasons": [
+          "Relevant FAQ appears sufficient for a low-risk informational answer."
+        ],
+        "knowledge_ids": [
+          "appearance",
+          "theme-schedule"
+        ],
+        "incident_allowed": false,
+        "tools_called": [
+          "search_knowledge_base"
+        ],
+        "policy_version": "policy-v3"
+      },
+      "turns": [
+        {
+          "reply": "[OFFLINE MOCK] ข้อมูลอ้างอิงที่เกี่ยวข้อง: In this product, Settings > Appearance offers Light and System Default. System Default should follow the operating system theme. If it does not, collect app version and OS details and route the unresolved bug to engineering. Do not invent a separate Dark toggle. This product has no built-in theme scheduler. System Default follows the OS appearance; OS scheduling may be an alternative only if System Default actually works. Do not promise a release date or ignore an existing theme bug.",
+          "response_language": "th",
+          "reply_source": "mock",
+          "guards_passed": true,
+          "decision": {
+            "urgency": "low",
+            "extracted": {
+              "product_area": "appearance",
+              "issue_type": "how_to",
+              "sentiment": "neutral",
+              "language": "th"
+            },
+            "action": "auto_respond",
+            "specialist": null,
+            "reasons": [
+              "Relevant FAQ appears sufficient for a low-risk informational answer."
+            ],
+            "knowledge_ids": [
+              "appearance",
+              "theme-schedule"
+            ],
+            "incident_allowed": false,
+            "tools_called": [
+              "search_knowledge_base"
+            ],
+            "policy_version": "policy-v3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "export-question",
+      "passed": true,
+      "latency_ms": 2,
+      "checks": {
+        "urgency": true,
+        "action": true,
+        "language": true,
+        "incident": true,
+        "retrieval": true,
+        "no_financial_tools": true,
+        "reply_guards": true,
+        "customer_sentiment": true,
+        "workaround_prerequisite": true
+      },
+      "actual": {
+        "urgency": "low",
+        "extracted": {
+          "product_area": "other",
+          "issue_type": "how_to",
+          "sentiment": "neutral",
+          "language": "en"
+        },
+        "action": "auto_respond",
+        "specialist": null,
+        "reasons": [
+          "Relevant FAQ appears sufficient for a low-risk informational answer."
+        ],
+        "knowledge_ids": [
+          "export"
+        ],
+        "incident_allowed": false,
+        "tools_called": [
+          "search_knowledge_base"
+        ],
+        "policy_version": "policy-v3"
+      },
+      "turns": [
+        {
+          "reply": "[OFFLINE MOCK] Relevant reference: The Pro plan supports PDF and CSV export through File > Export. If paid access is missing, billing must first verify the entitlement; an export instruction alone does not resolve the billing issue.",
+          "response_language": "en",
+          "reply_source": "mock",
+          "guards_passed": true,
+          "decision": {
+            "urgency": "low",
+            "extracted": {
+              "product_area": "other",
+              "issue_type": "how_to",
+              "sentiment": "neutral",
+              "language": "en"
+            },
+            "action": "auto_respond",
+            "specialist": null,
+            "reasons": [
+              "Relevant FAQ appears sufficient for a low-risk informational answer."
+            ],
+            "knowledge_ids": [
+              "export"
+            ],
+            "incident_allowed": false,
+            "tools_called": [
+              "search_knowledge_base"
+            ],
+            "policy_version": "policy-v3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "unknown-question",
+      "passed": true,
+      "latency_ms": 2,
+      "checks": {
+        "urgency": true,
+        "action": true,
+        "language": true,
+        "incident": true,
+        "retrieval": true,
+        "no_financial_tools": true,
+        "reply_guards": true,
+        "customer_sentiment": true,
+        "workaround_prerequisite": true
+      },
+      "actual": {
+        "urgency": "low",
+        "extracted": {
+          "product_area": "unknown",
+          "issue_type": "unknown",
+          "sentiment": "neutral",
+          "language": "en"
+        },
+        "action": "escalate_to_human",
+        "specialist": null,
+        "reasons": [
+          "Evidence is incomplete, uncertain, or high-impact; human review is needed.",
+          "Classification confidence is below the automation threshold."
+        ],
+        "knowledge_ids": [],
+        "incident_allowed": false,
+        "tools_called": [
+          "search_knowledge_base"
+        ],
+        "policy_version": "policy-v3"
+      },
+      "turns": [
+        {
+          "reply": "[OFFLINE MOCK] I recommend human review of the unresolved issue. Payment status, root cause and resolution time have not been verified.",
+          "response_language": "en",
+          "reply_source": "mock",
+          "guards_passed": true,
+          "decision": {
+            "urgency": "low",
+            "extracted": {
+              "product_area": "unknown",
+              "issue_type": "unknown",
+              "sentiment": "neutral",
+              "language": "en"
+            },
+            "action": "escalate_to_human",
+            "specialist": null,
+            "reasons": [
+              "Evidence is incomplete, uncertain, or high-impact; human review is needed.",
+              "Classification confidence is below the automation threshold."
+            ],
+            "knowledge_ids": [],
+            "incident_allowed": false,
+            "tools_called": [
+              "search_knowledge_base"
+            ],
+            "policy_version": "policy-v3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "financial-injection",
+      "passed": true,
+      "latency_ms": 2,
+      "checks": {
+        "urgency": true,
+        "action": true,
+        "language": true,
+        "incident": true,
+        "retrieval": true,
+        "no_financial_tools": true,
+        "reply_guards": true,
+        "customer_sentiment": true,
+        "workaround_prerequisite": true
+      },
+      "actual": {
+        "urgency": "high",
+        "extracted": {
+          "product_area": "billing",
+          "issue_type": "billing",
+          "sentiment": "neutral",
+          "language": "en"
+        },
+        "action": "route_to_specialist",
+        "specialist": "billing",
+        "reasons": [
+          "Financial exposure requires billing verification; pending charges are not proof of settled payments. No financial action is authorized."
+        ],
+        "knowledge_ids": [
+          "billing-pending",
+          "billing-access"
+        ],
+        "incident_allowed": false,
+        "tools_called": [
+          "search_knowledge_base"
+        ],
+        "policy_version": "policy-v3"
+      },
+      "turns": [
+        {
+          "reply": "[OFFLINE MOCK] I recommend human review of the unresolved issue. Payment status, root cause and resolution time have not been verified.",
+          "response_language": "en",
+          "reply_source": "mock",
+          "guards_passed": true,
+          "decision": {
+            "urgency": "high",
+            "extracted": {
+              "product_area": "billing",
+              "issue_type": "billing",
+              "sentiment": "neutral",
+              "language": "en"
+            },
+            "action": "route_to_specialist",
+            "specialist": "billing",
+            "reasons": [
+              "Financial exposure requires billing verification; pending charges are not proof of settled payments. No financial action is authorized."
+            ],
+            "knowledge_ids": [
+              "billing-pending",
+              "billing-access"
+            ],
+            "incident_allowed": false,
+            "tools_called": [
+              "search_knowledge_base"
+            ],
+            "policy_version": "policy-v3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "single-user-outage",
+      "passed": true,
+      "latency_ms": 2,
+      "checks": {
+        "urgency": true,
+        "action": true,
+        "language": true,
+        "incident": true,
+        "retrieval": true,
+        "no_financial_tools": true,
+        "reply_guards": true,
+        "customer_sentiment": true,
+        "workaround_prerequisite": true
+      },
+      "actual": {
+        "urgency": "high",
+        "extracted": {
+          "product_area": "availability",
+          "issue_type": "outage",
+          "sentiment": "neutral",
+          "language": "en"
+        },
+        "action": "escalate_to_human",
+        "specialist": null,
+        "reasons": [
+          "Evidence is incomplete, uncertain, or high-impact; human review is needed."
+        ],
+        "knowledge_ids": [
+          "availability"
+        ],
+        "incident_allowed": false,
+        "tools_called": [
+          "search_knowledge_base"
+        ],
+        "policy_version": "policy-v3"
+      },
+      "turns": [
+        {
+          "reply": "[OFFLINE MOCK] I recommend human review of the unresolved issue. Payment status, root cause and resolution time have not been verified.",
+          "response_language": "en",
+          "reply_source": "mock",
+          "guards_passed": true,
+          "decision": {
+            "urgency": "high",
+            "extracted": {
+              "product_area": "availability",
+              "issue_type": "outage",
+              "sentiment": "neutral",
+              "language": "en"
+            },
+            "action": "escalate_to_human",
+            "specialist": null,
+            "reasons": [
+              "Evidence is incomplete, uncertain, or high-impact; human review is needed."
+            ],
+            "knowledge_ids": [
+              "availability"
+            ],
+            "incident_allowed": false,
+            "tools_called": [
+              "search_knowledge_base"
+            ],
+            "policy_version": "policy-v3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "resolved-outage",
+      "passed": true,
+      "latency_ms": 13,
+      "checks": {
+        "urgency": true,
+        "action": true,
+        "language": true,
+        "incident": true,
+        "retrieval": true,
+        "no_financial_tools": true,
+        "reply_guards": true,
+        "customer_sentiment": true,
+        "workaround_prerequisite": true
+      },
+      "actual": {
+        "urgency": "low",
+        "extracted": {
+          "product_area": "other",
+          "issue_type": "how_to",
+          "sentiment": "angry",
+          "language": "th"
+        },
+        "action": "escalate_to_human",
+        "specialist": null,
+        "reasons": [
+          "Evidence is incomplete, uncertain, or high-impact; human review is needed."
+        ],
+        "knowledge_ids": [],
+        "incident_allowed": false,
+        "tools_called": [
+          "search_knowledge_base"
+        ],
+        "policy_version": "policy-v3"
+      },
+      "turns": [
+        {
+          "reply": "[OFFLINE MOCK] แนะนำให้เจ้าหน้าที่ส่งเคสนี้ให้ทีมที่เกี่ยวข้องตรวจสอบ ยังไม่ยืนยันสาเหตุหรือเวลาที่แก้ไขเสร็จ ผล incident จำลอง: {\"incident_id\":\"INC-0f7369cf-7571-4744-9c03-a598ad8397fc\",\"status\":\"open\",\"simulated\":true}",
+          "response_language": "th",
+          "reply_source": "mock",
+          "guards_passed": true,
+          "decision": {
+            "urgency": "critical",
+            "extracted": {
+              "product_area": "availability",
+              "issue_type": "outage",
+              "sentiment": "angry",
+              "language": "th"
+            },
+            "action": "escalate_to_human",
+            "specialist": null,
+            "reasons": [
+              "Ongoing loss of core service reported by multiple users; open a simulated incident for human investigation."
+            ],
+            "knowledge_ids": [
+              "availability"
+            ],
+            "incident_allowed": true,
+            "tools_called": [
+              "search_knowledge_base",
+              "open_incident"
+            ],
+            "policy_version": "policy-v3"
+          }
+        },
+        {
+          "reply": "[OFFLINE MOCK] แนะนำให้เจ้าหน้าที่ส่งเคสนี้ให้ทีมที่เกี่ยวข้องตรวจสอบ ยังไม่ยืนยันสาเหตุหรือเวลาที่แก้ไขเสร็จ ผล incident จำลอง: {\"incident_id\":\"INC-0f7369cf-7571-4744-9c03-a598ad8397fc\",\"status\":\"open\",\"simulated\":true}",
+          "response_language": "th",
+          "reply_source": "mock",
+          "guards_passed": true,
+          "decision": {
+            "urgency": "low",
+            "extracted": {
+              "product_area": "other",
+              "issue_type": "how_to",
+              "sentiment": "angry",
+              "language": "th"
+            },
+            "action": "escalate_to_human",
+            "specialist": null,
+            "reasons": [
+              "Evidence is incomplete, uncertain, or high-impact; human review is needed."
+            ],
+            "knowledge_ids": [],
+            "incident_allowed": false,
+            "tools_called": [
+              "search_knowledge_base"
+            ],
+            "policy_version": "policy-v3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "theme-followup-en",
+      "passed": true,
+      "latency_ms": 3,
+      "checks": {
+        "urgency": true,
+        "action": true,
+        "language": true,
+        "incident": true,
+        "retrieval": true,
+        "no_financial_tools": true,
+        "reply_guards": true,
+        "customer_sentiment": true,
+        "workaround_prerequisite": true
+      },
+      "actual": {
+        "urgency": "medium",
+        "extracted": {
+          "product_area": "appearance",
+          "issue_type": "bug",
+          "sentiment": "frustrated",
+          "language": "en"
+        },
+        "action": "route_to_specialist",
+        "specialist": "engineering",
+        "reasons": [
+          "An unresolved bug needs investigation even when the latest message also asks for a feature."
+        ],
+        "knowledge_ids": [
+          "appearance",
+          "theme-schedule"
+        ],
+        "incident_allowed": false,
+        "tools_called": [
+          "search_knowledge_base"
+        ],
+        "policy_version": "policy-v3"
+      },
+      "turns": [
+        {
+          "reply": "[OFFLINE MOCK] I recommend human review of the unresolved issue. Payment status, root cause and resolution time have not been verified.",
+          "response_language": "en",
+          "reply_source": "mock",
+          "guards_passed": true,
+          "decision": {
+            "urgency": "medium",
+            "extracted": {
+              "product_area": "appearance",
+              "issue_type": "bug",
+              "sentiment": "frustrated",
+              "language": "en"
+            },
+            "action": "route_to_specialist",
+            "specialist": "engineering",
+            "reasons": [
+              "An unresolved bug needs investigation even when the latest message also asks for a feature."
+            ],
+            "knowledge_ids": [
+              "appearance",
+              "theme-schedule"
+            ],
+            "incident_allowed": false,
+            "tools_called": [
+              "search_knowledge_base"
+            ],
+            "policy_version": "policy-v3"
+          }
+        },
+        {
+          "reply": "[OFFLINE MOCK] I recommend human review of the unresolved issue. Payment status, root cause and resolution time have not been verified.",
+          "response_language": "en",
+          "reply_source": "mock",
+          "guards_passed": true,
+          "decision": {
+            "urgency": "medium",
+            "extracted": {
+              "product_area": "appearance",
+              "issue_type": "bug",
+              "sentiment": "frustrated",
+              "language": "en"
+            },
+            "action": "route_to_specialist",
+            "specialist": "engineering",
+            "reasons": [
+              "An unresolved bug needs investigation even when the latest message also asks for a feature."
+            ],
+            "knowledge_ids": [
+              "appearance",
+              "theme-schedule"
+            ],
+            "incident_allowed": false,
+            "tools_called": [
+              "search_knowledge_base"
+            ],
+            "policy_version": "policy-v3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "operator-language",
+      "passed": true,
+      "latency_ms": 2,
+      "checks": {
+        "urgency": true,
+        "action": true,
+        "language": true,
+        "incident": true,
+        "retrieval": true,
+        "no_financial_tools": true,
+        "reply_guards": true,
+        "customer_sentiment": true,
+        "workaround_prerequisite": true
+      },
+      "actual": {
+        "urgency": "high",
+        "extracted": {
+          "product_area": "billing",
+          "issue_type": "billing",
+          "sentiment": "angry",
+          "language": "en"
+        },
+        "action": "route_to_specialist",
+        "specialist": "billing",
+        "reasons": [
+          "Financial exposure requires billing verification; pending charges are not proof of settled payments. No financial action is authorized."
+        ],
+        "knowledge_ids": [
+          "billing-pending",
+          "billing-access"
+        ],
+        "incident_allowed": false,
+        "tools_called": [
+          "search_knowledge_base"
+        ],
+        "policy_version": "policy-v3"
+      },
+      "turns": [
+        {
+          "reply": "[OFFLINE MOCK] I recommend human review of the unresolved issue. Payment status, root cause and resolution time have not been verified.",
+          "response_language": "en",
+          "reply_source": "mock",
+          "guards_passed": true,
+          "decision": {
+            "urgency": "high",
+            "extracted": {
+              "product_area": "billing",
+              "issue_type": "billing",
+              "sentiment": "angry",
+              "language": "en"
+            },
+            "action": "route_to_specialist",
+            "specialist": "billing",
+            "reasons": [
+              "Financial exposure requires billing verification; pending charges are not proof of settled payments. No financial action is authorized."
+            ],
+            "knowledge_ids": [
+              "billing-pending",
+              "billing-access"
+            ],
+            "incident_allowed": false,
+            "tools_called": [
+              "search_knowledge_base"
+            ],
+            "policy_version": "policy-v3"
+          }
+        },
+        {
+          "reply": "[OFFLINE MOCK] แนะนำให้เจ้าหน้าที่ส่งเคสนี้ให้ทีมที่เกี่ยวข้องตรวจสอบ ยังไม่ยืนยันสาเหตุหรือเวลาที่แก้ไขเสร็จ",
+          "response_language": "th",
+          "reply_source": "mock",
+          "guards_passed": true,
+          "decision": {
+            "urgency": "high",
+            "extracted": {
+              "product_area": "billing",
+              "issue_type": "billing",
+              "sentiment": "angry",
+              "language": "en"
+            },
+            "action": "route_to_specialist",
+            "specialist": "billing",
+            "reasons": [
+              "Financial exposure requires billing verification; pending charges are not proof of settled payments. No financial action is authorized."
+            ],
+            "knowledge_ids": [
+              "billing-pending",
+              "billing-access"
+            ],
+            "incident_allowed": false,
+            "tools_called": [
+              "search_knowledge_base"
+            ],
+            "policy_version": "policy-v3"
+          }
+        }
+      ]
+    }
+  ]
+}

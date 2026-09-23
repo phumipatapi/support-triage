@@ -3,6 +3,7 @@ import { mkdirSync } from "node:fs";
 import { dirname } from "node:path";
 import { createHash, randomUUID } from "node:crypto";
 import { AppError } from "./errors";
+import { IncidentResult, type IncidentOutput } from "./schemas";
 import type {
   AssessmentData,
   DecisionData,
@@ -268,11 +269,24 @@ export class Store {
   }
   fail(run: Run, code: string) {
     this.db
+      .transaction(() => {
+        const update = this.db
+          .prepare(
+            "UPDATE runs SET status='retryable',error=?,lease_until=0 WHERE id=? AND owner=? AND status='running'",
+          )
+          .run(code, run.id, run.owner);
+        // A worker that lost its lease must not describe the replacement's run as failed.
+        if (update.changes) this.audit(run.id, "run.retryable", { code });
+      })
+      .immediate();
+  }
+  existingIncident(conversationId: string): IncidentOutput | null {
+    const effect = this.db
       .prepare(
-        "UPDATE runs SET status='retryable',error=?,lease_until=0 WHERE id=? AND owner=? AND status='running'",
+        "SELECT result FROM side_effects WHERE conversation_id=? AND status='succeeded'",
       )
-      .run(code, run.id, run.owner);
-    this.audit(run.id, "run.retryable", { code });
+      .get(conversationId) as { result: string } | undefined;
+    return effect ? IncidentResult.parse(JSON.parse(effect.result)) : null;
   }
   history(id: string) {
     const state = this.state(id);

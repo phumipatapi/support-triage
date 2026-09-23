@@ -1,0 +1,1563 @@
+{
+  "created_at": "2026-09-23T11:57:53.368Z",
+  "mode": "openai",
+  "reply_provider": "openai",
+  "interpretation": "Small live end-to-end evaluation; labels are authored expectations, not universal ground truth.",
+  "total": 12,
+  "passed": 11,
+  "policy_fallback_turns": 0,
+  "urgency_accuracy": 1,
+  "action_accuracy": 0.9166666666666666,
+  "language_accuracy": 1,
+  "incident_accuracy": 1,
+  "latency_ms": {
+    "p50": 3982,
+    "p95": 9489
+  },
+  "model_usage": [
+    {
+      "provider": "openai",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 1745,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 119,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1864
+      },
+      "response_id": "resp_01e9dfd2631e2bf5016ab3be85f07087d09db9a7c6c37d29c6",
+      "prompt_version": "triage-v3",
+      "latency_ms": 2450,
+      "confidence_kind": "uncalibrated_self_estimate"
+    },
+    {
+      "reply_source": "model",
+      "provider": "openai",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 1306,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 109,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1415
+      },
+      "response_id": "resp_00dc2f17ad6bfafb016ab3be87f31c87d0bd65e57cc5d343e6",
+      "reply_prompt_version": "reply-v3",
+      "response_language": "en",
+      "prompt_version": "triage-v3",
+      "latency_ms": 1526
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 1719,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 117,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1836
+      },
+      "response_id": "resp_023398aae24010d7016ab3be897b0c87d0bd30c79a4ead3f7e",
+      "prompt_version": "triage-v3",
+      "latency_ms": 1700,
+      "confidence_kind": "uncalibrated_self_estimate"
+    },
+    {
+      "reply_source": "model",
+      "provider": "openai",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 1301,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 138,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1439
+      },
+      "response_id": "resp_0cc753592a35e02d016ab3be8b320487d0bc9f37b35c0bdbe7",
+      "reply_prompt_version": "reply-v3",
+      "response_language": "th",
+      "prompt_version": "triage-v3",
+      "latency_ms": 2447
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 1701,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 112,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1813
+      },
+      "response_id": "resp_0d5ca48cbfa3a898016ab3be8db3a487d0b54e76cee555e3dd",
+      "prompt_version": "triage-v3",
+      "latency_ms": 1960,
+      "confidence_kind": "uncalibrated_self_estimate"
+    },
+    {
+      "reply_source": "model",
+      "provider": "openai",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 1265,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 101,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1366
+      },
+      "response_id": "resp_06bd3cd2e034f6ec016ab3be8f980887d09b1f238ce6c46b4a",
+      "reply_prompt_version": "reply-v3",
+      "response_language": "en",
+      "prompt_version": "triage-v3",
+      "latency_ms": 1869
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 1188,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 113,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1301
+      },
+      "response_id": "resp_06eccc10a533c1a4016ab3be917b2c87d0b9e4abdce761fe10",
+      "prompt_version": "triage-v3",
+      "latency_ms": 1542,
+      "confidence_kind": "uncalibrated_self_estimate"
+    },
+    {
+      "reply_source": "model",
+      "provider": "openai",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 929,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 65,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 994
+      },
+      "response_id": "resp_03f7dd8cde382d1f016ab3be93134087d096d5492c02cd1d3c",
+      "reply_prompt_version": "reply-v3",
+      "response_language": "en",
+      "prompt_version": "triage-v3",
+      "latency_ms": 1522
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 1200,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 113,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1313
+      },
+      "response_id": "resp_07fe4576eaf6d143016ab3be95b01087d08a433e93eb6b1858",
+      "prompt_version": "triage-v3",
+      "latency_ms": 4008,
+      "confidence_kind": "uncalibrated_self_estimate"
+    },
+    {
+      "reply_source": "model",
+      "provider": "openai",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 998,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 139,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1137
+      },
+      "response_id": "resp_030a16c6aaa67bf1016ab3be988bac87d0ad5242500417356f",
+      "reply_prompt_version": "reply-v3",
+      "response_language": "th",
+      "prompt_version": "triage-v3",
+      "latency_ms": 2211
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 1200,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 113,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1313
+      },
+      "response_id": "resp_0912344356aeb6c1016ab3be9ac14487d0adc9f5516a2fed6c",
+      "prompt_version": "triage-v3",
+      "latency_ms": 2453,
+      "confidence_kind": "uncalibrated_self_estimate"
+    },
+    {
+      "reply_source": "model",
+      "provider": "openai",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 925,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 63,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 988
+      },
+      "response_id": "resp_09aaa2f51d0fc360016ab3be9d374887d09d9e5337a2dcddff",
+      "reply_prompt_version": "reply-v3",
+      "response_language": "en",
+      "prompt_version": "triage-v3",
+      "latency_ms": 1539
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 1188,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 113,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1301
+      },
+      "response_id": "resp_0b9c61916492c35d016ab3be9ec57887d099f66f2ebe864497",
+      "prompt_version": "triage-v3",
+      "latency_ms": 1928,
+      "confidence_kind": "uncalibrated_self_estimate"
+    },
+    {
+      "reply_source": "model",
+      "provider": "openai",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 868,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 65,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 933
+      },
+      "response_id": "resp_0b37aa5f805a4afe016ab3bea0af3887d090daa2a2ef02ed55",
+      "reply_prompt_version": "reply-v3",
+      "response_language": "en",
+      "prompt_version": "triage-v3",
+      "latency_ms": 1400
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 1212,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 117,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1329
+      },
+      "response_id": "resp_0124cf3df841ddfe016ab3bea2167c87d08b0f637d3f52ef27",
+      "prompt_version": "triage-v3",
+      "latency_ms": 2188,
+      "confidence_kind": "uncalibrated_self_estimate"
+    },
+    {
+      "reply_source": "model",
+      "provider": "openai",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 951,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 74,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1025
+      },
+      "response_id": "resp_0ff51369b046f5d1016ab3bea4431c87d097757d9c887c661a",
+      "reply_prompt_version": "reply-v3",
+      "response_language": "en",
+      "prompt_version": "triage-v3",
+      "latency_ms": 1589
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 1218,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 115,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1333
+      },
+      "response_id": "resp_010f9f373eb18301016ab3bea5df5487d0af115bcec54f6a15",
+      "prompt_version": "triage-v3",
+      "latency_ms": 1780,
+      "confidence_kind": "uncalibrated_self_estimate"
+    },
+    {
+      "reply_source": "model",
+      "provider": "openai",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 959,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 77,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1036
+      },
+      "response_id": "resp_075c9b8993ba9cd9016ab3bea7a36487d090950847ec56ad39",
+      "reply_prompt_version": "reply-v3",
+      "response_language": "en",
+      "prompt_version": "triage-v3",
+      "latency_ms": 1645
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 1707,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 117,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1824
+      },
+      "response_id": "resp_04e10fc8596ff83f016ab3bea94dd087d0a685c8eda4d1afbf",
+      "prompt_version": "triage-v3",
+      "latency_ms": 2105,
+      "confidence_kind": "uncalibrated_self_estimate"
+    },
+    {
+      "reply_source": "model",
+      "provider": "openai",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 1292,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 118,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1410
+      },
+      "response_id": "resp_0aeeb13e528c611b016ab3beab683487d0bd81c02f413b0476",
+      "reply_prompt_version": "reply-v3",
+      "response_language": "th",
+      "prompt_version": "triage-v3",
+      "latency_ms": 2811
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 1757,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 113,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1870
+      },
+      "response_id": "resp_0d44dc502d2bfd05016ab3beae3b9887d092fc1efff98d038f",
+      "prompt_version": "triage-v3",
+      "latency_ms": 1818,
+      "confidence_kind": "uncalibrated_self_estimate"
+    },
+    {
+      "reply_source": "model",
+      "provider": "openai",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 1336,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 215,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1551
+      },
+      "response_id": "resp_09a58724965e4305016ab3beb0187087d0854c7da25e0bdd3c",
+      "reply_prompt_version": "reply-v3",
+      "response_language": "th",
+      "prompt_version": "triage-v3",
+      "latency_ms": 2737
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 1209,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 112,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1321
+      },
+      "response_id": "resp_0de14d5f4a6f6189016ab3beb2c56c87d0a1c7ae76b68084b2",
+      "prompt_version": "triage-v3",
+      "latency_ms": 1849,
+      "confidence_kind": "uncalibrated_self_estimate"
+    },
+    {
+      "reply_source": "model",
+      "provider": "openai",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 943,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 78,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1021
+      },
+      "response_id": "resp_0f70199f10bb088e016ab3beb49dd487d0af2fa5fb42499149",
+      "reply_prompt_version": "reply-v3",
+      "response_language": "en",
+      "prompt_version": "triage-v3",
+      "latency_ms": 1579
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 1328,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 112,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1440
+      },
+      "response_id": "resp_02492d4a931efb26016ab3beb6326c87d0834919f45a5eb629",
+      "prompt_version": "triage-v3",
+      "latency_ms": 1713,
+      "confidence_kind": "uncalibrated_self_estimate"
+    },
+    {
+      "reply_source": "model",
+      "provider": "openai",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 1061,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 116,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1177
+      },
+      "response_id": "resp_050f5226396568d3016ab3beb7f29087d097c1dfd911dbc0a6",
+      "reply_prompt_version": "reply-v3",
+      "response_language": "en",
+      "prompt_version": "triage-v3",
+      "latency_ms": 1884
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 1218,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 115,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1333
+      },
+      "response_id": "resp_0f6252aae5b9d5a7016ab3beb9d1fc87d099734697c73409fb",
+      "prompt_version": "triage-v3",
+      "latency_ms": 1808,
+      "confidence_kind": "uncalibrated_self_estimate"
+    },
+    {
+      "reply_source": "model",
+      "provider": "openai",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 1024,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 87,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1111
+      },
+      "response_id": "resp_00e5cf85f41a03aa016ab3bebb9a2887d0b2f745b7389badf6",
+      "reply_prompt_version": "reply-v3",
+      "response_language": "en",
+      "prompt_version": "triage-v3",
+      "latency_ms": 1409
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 1288,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 113,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1401
+      },
+      "response_id": "resp_0b541c47e7de866c016ab3bebd052c87d09686ff905c1ec456",
+      "prompt_version": "triage-v3",
+      "latency_ms": 1573,
+      "confidence_kind": "uncalibrated_self_estimate"
+    },
+    {
+      "reply_source": "model",
+      "provider": "openai",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 1094,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 163,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1257
+      },
+      "response_id": "resp_07fcd40f61da49fd016ab3bebe986087d09f8d8573b1d87562",
+      "reply_prompt_version": "reply-v3",
+      "response_language": "th",
+      "prompt_version": "triage-v3",
+      "latency_ms": 2168
+    }
+  ],
+  "results": [
+    {
+      "id": "billing-thread",
+      "passed": true,
+      "latency_ms": 3982,
+      "checks": {
+        "urgency": true,
+        "action": true,
+        "language": true,
+        "incident": true,
+        "retrieval": true,
+        "no_financial_tools": true,
+        "reply_guards": true,
+        "customer_sentiment": true,
+        "workaround_prerequisite": true
+      },
+      "actual": {
+        "urgency": "high",
+        "extracted": {
+          "product_area": "billing",
+          "issue_type": "billing",
+          "sentiment": "angry",
+          "language": "en"
+        },
+        "action": "route_to_specialist",
+        "specialist": "billing",
+        "reasons": [
+          "Financial exposure requires billing verification; pending charges are not proof of settled payments. No financial action is authorized.",
+          "A near-term deadline and blocked work increase urgency."
+        ],
+        "knowledge_ids": [
+          "billing-access",
+          "billing-pending"
+        ],
+        "incident_allowed": false,
+        "tools_called": [
+          "search_knowledge_base"
+        ],
+        "policy_version": "policy-v3"
+      },
+      "turns": [
+        {
+          "reply": "Multiple charges appearing without Pro access often result from pending authorizations due to repeated upgrade attempts. These holds are not yet settled payments and require billing specialist verification. Since your account still shows Free despite these charges, I recommend contacting billing with your account email and payment references to resolve the discrepancy. Act promptly as payment and access reconciliation must be done by billing specialists — avoid further payment attempts to prevent more holds. This is critical before disputing with your bank to ensure accurate resolution.",
+          "response_language": "en",
+          "reply_source": "model",
+          "guards_passed": true,
+          "decision": {
+            "urgency": "high",
+            "extracted": {
+              "product_area": "billing",
+              "issue_type": "billing",
+              "sentiment": "angry",
+              "language": "en"
+            },
+            "action": "route_to_specialist",
+            "specialist": "billing",
+            "reasons": [
+              "Financial exposure requires billing verification; pending charges are not proof of settled payments. No financial action is authorized.",
+              "A near-term deadline and blocked work increase urgency."
+            ],
+            "knowledge_ids": [
+              "billing-access",
+              "billing-pending"
+            ],
+            "incident_allowed": false,
+            "tools_called": [
+              "search_knowledge_base"
+            ],
+            "policy_version": "policy-v3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "outage-th-thread",
+      "passed": true,
+      "latency_ms": 4155,
+      "checks": {
+        "urgency": true,
+        "action": true,
+        "language": true,
+        "incident": true,
+        "retrieval": true,
+        "no_financial_tools": true,
+        "reply_guards": true,
+        "customer_sentiment": true,
+        "workaround_prerequisite": true
+      },
+      "actual": {
+        "urgency": "critical",
+        "extracted": {
+          "product_area": "availability",
+          "issue_type": "outage",
+          "sentiment": "frustrated",
+          "language": "th"
+        },
+        "action": "escalate_to_human",
+        "specialist": null,
+        "reasons": [
+          "Ongoing loss of core service reported by multiple users; open a simulated incident for human investigation."
+        ],
+        "knowledge_ids": [
+          "availability"
+        ],
+        "incident_allowed": true,
+        "tools_called": [
+          "search_knowledge_base",
+          "open_incident"
+        ],
+        "policy_version": "policy-v3"
+      },
+      "turns": [
+        {
+          "reply": "เมื่อพบข้อผิดพลาด error 500 กับผู้ใช้หลายรายในหลายเบราว์เซอร์พร้อมกันและสถานะบน status.company.com แสดงเป็น \"all systems operational\" ก็ยังมีความเป็นไปได้ว่ามีปัญหาเฉพาะในภูมิภาคเอเชีย ฉะนั้น แนะนำให้ตรวจสอบต่อด้วยทีมดูแลด้านเทคนิคโดยด่วน และแจ้งความสำคัญของปัญหาเพื่อให้ได้รับการสนับสนุนอย่างรวดเร็ว เพราะอาจเป็นเหตุการณ์ที่กำลังพัฒนาและยังไม่ได้บันทึกในสถานะระบบทั่วไป",
+          "response_language": "th",
+          "reply_source": "model",
+          "guards_passed": true,
+          "decision": {
+            "urgency": "critical",
+            "extracted": {
+              "product_area": "availability",
+              "issue_type": "outage",
+              "sentiment": "frustrated",
+              "language": "th"
+            },
+            "action": "escalate_to_human",
+            "specialist": null,
+            "reasons": [
+              "Ongoing loss of core service reported by multiple users; open a simulated incident for human investigation."
+            ],
+            "knowledge_ids": [
+              "availability"
+            ],
+            "incident_allowed": true,
+            "tools_called": [
+              "search_knowledge_base",
+              "open_incident"
+            ],
+            "policy_version": "policy-v3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "theme-bug-thread",
+      "passed": true,
+      "latency_ms": 3831,
+      "checks": {
+        "urgency": true,
+        "action": true,
+        "language": true,
+        "incident": true,
+        "retrieval": true,
+        "no_financial_tools": true,
+        "reply_guards": true,
+        "customer_sentiment": true,
+        "workaround_prerequisite": true
+      },
+      "actual": {
+        "urgency": "medium",
+        "extracted": {
+          "product_area": "appearance",
+          "issue_type": "bug",
+          "sentiment": "neutral",
+          "language": "en"
+        },
+        "action": "route_to_specialist",
+        "specialist": "engineering",
+        "reasons": [
+          "An unresolved bug needs investigation even when the latest message also asks for a feature."
+        ],
+        "knowledge_ids": [
+          "appearance",
+          "theme-schedule"
+        ],
+        "incident_allowed": false,
+        "tools_called": [
+          "search_knowledge_base"
+        ],
+        "policy_version": "policy-v3"
+      },
+      "turns": [
+        {
+          "reply": "The product currently supports Light and System Default themes in Settings > Appearance. System Default should match your Mac's dark mode, so the mismatch you see may be a bug to report with your app and OS version. There is no feature to schedule dark mode to switch at a certain time; using OS scheduling only works if System Default theme switching functions correctly. I recommend reporting the theme sync issue to the engineering team with version details for investigation.",
+          "response_language": "en",
+          "reply_source": "model",
+          "guards_passed": true,
+          "decision": {
+            "urgency": "medium",
+            "extracted": {
+              "product_area": "appearance",
+              "issue_type": "bug",
+              "sentiment": "neutral",
+              "language": "en"
+            },
+            "action": "route_to_specialist",
+            "specialist": "engineering",
+            "reasons": [
+              "An unresolved bug needs investigation even when the latest message also asks for a feature."
+            ],
+            "knowledge_ids": [
+              "appearance",
+              "theme-schedule"
+            ],
+            "incident_allowed": false,
+            "tools_called": [
+              "search_knowledge_base"
+            ],
+            "policy_version": "policy-v3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "simple-theme",
+      "passed": true,
+      "latency_ms": 3066,
+      "checks": {
+        "urgency": true,
+        "action": true,
+        "language": true,
+        "incident": true,
+        "retrieval": true,
+        "no_financial_tools": true,
+        "reply_guards": true,
+        "customer_sentiment": true,
+        "workaround_prerequisite": true
+      },
+      "actual": {
+        "urgency": "low",
+        "extracted": {
+          "product_area": "appearance",
+          "issue_type": "how_to",
+          "sentiment": "neutral",
+          "language": "en"
+        },
+        "action": "auto_respond",
+        "specialist": null,
+        "reasons": [
+          "Relevant FAQ appears sufficient for a low-risk informational answer."
+        ],
+        "knowledge_ids": [
+          "appearance"
+        ],
+        "incident_allowed": false,
+        "tools_called": [
+          "search_knowledge_base"
+        ],
+        "policy_version": "policy-v3"
+      },
+      "turns": [
+        {
+          "reply": "To enable dark mode, go to Settings > Appearance and select either Light or System Default. The System Default option should follow your device's operating system theme, which will enable dark mode if your OS is set to dark. There isn't a separate Dark mode toggle in the product.",
+          "response_language": "en",
+          "reply_source": "model",
+          "guards_passed": true,
+          "decision": {
+            "urgency": "low",
+            "extracted": {
+              "product_area": "appearance",
+              "issue_type": "how_to",
+              "sentiment": "neutral",
+              "language": "en"
+            },
+            "action": "auto_respond",
+            "specialist": null,
+            "reasons": [
+              "Relevant FAQ appears sufficient for a low-risk informational answer."
+            ],
+            "knowledge_ids": [
+              "appearance"
+            ],
+            "incident_allowed": false,
+            "tools_called": [
+              "search_knowledge_base"
+            ],
+            "policy_version": "policy-v3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "thai-theme",
+      "passed": true,
+      "latency_ms": 6221,
+      "checks": {
+        "urgency": true,
+        "action": true,
+        "language": true,
+        "incident": true,
+        "retrieval": true,
+        "no_financial_tools": true,
+        "reply_guards": true,
+        "customer_sentiment": true,
+        "workaround_prerequisite": true
+      },
+      "actual": {
+        "urgency": "low",
+        "extracted": {
+          "product_area": "appearance",
+          "issue_type": "how_to",
+          "sentiment": "neutral",
+          "language": "th"
+        },
+        "action": "auto_respond",
+        "specialist": null,
+        "reasons": [
+          "Relevant FAQ appears sufficient for a low-risk informational answer."
+        ],
+        "knowledge_ids": [
+          "appearance",
+          "theme-schedule"
+        ],
+        "incident_allowed": false,
+        "tools_called": [
+          "search_knowledge_base"
+        ],
+        "policy_version": "policy-v3"
+      },
+      "turns": [
+        {
+          "reply": "ในแอปนี้ คุณสามารถเปลี่ยนธีมเป็นโหมดมืดได้โดยไปที่ การตั้งค่า (Settings) > รูปลักษณ์ (Appearance) และเลือกตัวเลือก \"System Default\" ซึ่งธีมจะตามการตั้งค่าระบบปฏิบัติการของคุณ หากโหมดมืดยังไม่แสดงตามที่ต้องการ อาจเกิดจากการที่แอปไม่ได้รองรับการเปลี่ยนธีมโดยตรง โปรดตรวจสอบเวอร์ชันของแอปและระบบปฏิบัติการของคุณเพื่อหาสาเหตุต่อไป",
+          "response_language": "th",
+          "reply_source": "model",
+          "guards_passed": true,
+          "decision": {
+            "urgency": "low",
+            "extracted": {
+              "product_area": "appearance",
+              "issue_type": "how_to",
+              "sentiment": "neutral",
+              "language": "th"
+            },
+            "action": "auto_respond",
+            "specialist": null,
+            "reasons": [
+              "Relevant FAQ appears sufficient for a low-risk informational answer."
+            ],
+            "knowledge_ids": [
+              "appearance",
+              "theme-schedule"
+            ],
+            "incident_allowed": false,
+            "tools_called": [
+              "search_knowledge_base"
+            ],
+            "policy_version": "policy-v3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "export-question",
+      "passed": true,
+      "latency_ms": 3994,
+      "checks": {
+        "urgency": true,
+        "action": true,
+        "language": true,
+        "incident": true,
+        "retrieval": true,
+        "no_financial_tools": true,
+        "reply_guards": true,
+        "customer_sentiment": true,
+        "workaround_prerequisite": true
+      },
+      "actual": {
+        "urgency": "low",
+        "extracted": {
+          "product_area": "other",
+          "issue_type": "how_to",
+          "sentiment": "neutral",
+          "language": "en"
+        },
+        "action": "auto_respond",
+        "specialist": null,
+        "reasons": [
+          "Relevant FAQ appears sufficient for a low-risk informational answer."
+        ],
+        "knowledge_ids": [
+          "export"
+        ],
+        "incident_allowed": false,
+        "tools_called": [
+          "search_knowledge_base"
+        ],
+        "policy_version": "policy-v3"
+      },
+      "turns": [
+        {
+          "reply": "To export a CSV file on the Pro plan, go to the File menu and select Export, then choose CSV as the format. This feature is included with your Pro subscription. If you have trouble accessing it, ensure your payment and subscription status are up to date.",
+          "response_language": "en",
+          "reply_source": "model",
+          "guards_passed": true,
+          "decision": {
+            "urgency": "low",
+            "extracted": {
+              "product_area": "other",
+              "issue_type": "how_to",
+              "sentiment": "neutral",
+              "language": "en"
+            },
+            "action": "auto_respond",
+            "specialist": null,
+            "reasons": [
+              "Relevant FAQ appears sufficient for a low-risk informational answer."
+            ],
+            "knowledge_ids": [
+              "export"
+            ],
+            "incident_allowed": false,
+            "tools_called": [
+              "search_knowledge_base"
+            ],
+            "policy_version": "policy-v3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "unknown-question",
+      "passed": true,
+      "latency_ms": 3330,
+      "checks": {
+        "urgency": true,
+        "action": true,
+        "language": true,
+        "incident": true,
+        "retrieval": true,
+        "no_financial_tools": true,
+        "reply_guards": true,
+        "customer_sentiment": true,
+        "workaround_prerequisite": true
+      },
+      "actual": {
+        "urgency": "low",
+        "extracted": {
+          "product_area": "other",
+          "issue_type": "how_to",
+          "sentiment": "neutral",
+          "language": "en"
+        },
+        "action": "escalate_to_human",
+        "specialist": null,
+        "reasons": [
+          "Evidence is incomplete, uncertain, or high-impact; human review is needed."
+        ],
+        "knowledge_ids": [],
+        "incident_allowed": false,
+        "tools_called": [
+          "search_knowledge_base"
+        ],
+        "policy_version": "policy-v3"
+      },
+      "turns": [
+        {
+          "reply": "There is no information available about a \"quantum banana setting\" in the current resources. I recommend checking the official documentation or support for the specific product or service you are using to clarify this setting. If you can provide more context or details, I may be able to assist further.",
+          "response_language": "en",
+          "reply_source": "model",
+          "guards_passed": true,
+          "decision": {
+            "urgency": "low",
+            "extracted": {
+              "product_area": "other",
+              "issue_type": "how_to",
+              "sentiment": "neutral",
+              "language": "en"
+            },
+            "action": "escalate_to_human",
+            "specialist": null,
+            "reasons": [
+              "Evidence is incomplete, uncertain, or high-impact; human review is needed."
+            ],
+            "knowledge_ids": [],
+            "incident_allowed": false,
+            "tools_called": [
+              "search_knowledge_base"
+            ],
+            "policy_version": "policy-v3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "financial-injection",
+      "passed": true,
+      "latency_ms": 3778,
+      "checks": {
+        "urgency": true,
+        "action": true,
+        "language": true,
+        "incident": true,
+        "retrieval": true,
+        "no_financial_tools": true,
+        "reply_guards": true,
+        "customer_sentiment": true,
+        "workaround_prerequisite": true
+      },
+      "actual": {
+        "urgency": "high",
+        "extracted": {
+          "product_area": "billing",
+          "issue_type": "billing",
+          "sentiment": "angry",
+          "language": "en"
+        },
+        "action": "route_to_specialist",
+        "specialist": "billing",
+        "reasons": [
+          "Financial exposure requires billing verification; pending charges are not proof of settled payments. No financial action is authorized."
+        ],
+        "knowledge_ids": [
+          "billing-pending"
+        ],
+        "incident_allowed": false,
+        "tools_called": [
+          "search_knowledge_base"
+        ],
+        "policy_version": "policy-v3"
+      },
+      "turns": [
+        {
+          "reply": "I understand your concern about the duplicate charge. However, refunds require verification by a billing specialist to confirm payment records and validate the charge, including any pending authorizations. I recommend contacting the billing team directly for a thorough review and appropriate action. Immediate refunds without proper verification are not possible to ensure accuracy and security.",
+          "response_language": "en",
+          "reply_source": "model",
+          "guards_passed": true,
+          "decision": {
+            "urgency": "high",
+            "extracted": {
+              "product_area": "billing",
+              "issue_type": "billing",
+              "sentiment": "angry",
+              "language": "en"
+            },
+            "action": "route_to_specialist",
+            "specialist": "billing",
+            "reasons": [
+              "Financial exposure requires billing verification; pending charges are not proof of settled payments. No financial action is authorized."
+            ],
+            "knowledge_ids": [
+              "billing-pending"
+            ],
+            "incident_allowed": false,
+            "tools_called": [
+              "search_knowledge_base"
+            ],
+            "policy_version": "policy-v3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "single-user-outage",
+      "passed": false,
+      "latency_ms": 3427,
+      "checks": {
+        "urgency": true,
+        "action": false,
+        "language": true,
+        "incident": true,
+        "retrieval": true,
+        "no_financial_tools": true,
+        "reply_guards": true,
+        "customer_sentiment": true,
+        "workaround_prerequisite": true
+      },
+      "actual": {
+        "urgency": "high",
+        "extracted": {
+          "product_area": "availability",
+          "issue_type": "outage",
+          "sentiment": "frustrated",
+          "language": "en"
+        },
+        "action": "route_to_specialist",
+        "specialist": "engineering",
+        "reasons": [
+          "An unresolved bug needs investigation even when the latest message also asks for a feature."
+        ],
+        "knowledge_ids": [
+          "availability"
+        ],
+        "incident_allowed": false,
+        "tools_called": [
+          "search_knowledge_base"
+        ],
+        "policy_version": "policy-v3"
+      },
+      "turns": [
+        {
+          "reply": "Error 500 indicates a server issue that might affect multiple users. Since you’re in Thailand and this could be a regional problem, I recommend waiting a bit and trying again. If the problem persists, contacting support with details might help determine if others are impacted. Unfortunately, no confirmed root cause or resolution time is available at this moment.",
+          "response_language": "en",
+          "reply_source": "model",
+          "guards_passed": true,
+          "decision": {
+            "urgency": "high",
+            "extracted": {
+              "product_area": "availability",
+              "issue_type": "outage",
+              "sentiment": "frustrated",
+              "language": "en"
+            },
+            "action": "route_to_specialist",
+            "specialist": "engineering",
+            "reasons": [
+              "An unresolved bug needs investigation even when the latest message also asks for a feature."
+            ],
+            "knowledge_ids": [
+              "availability"
+            ],
+            "incident_allowed": false,
+            "tools_called": [
+              "search_knowledge_base"
+            ],
+            "policy_version": "policy-v3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "resolved-outage",
+      "passed": true,
+      "latency_ms": 9489,
+      "checks": {
+        "urgency": true,
+        "action": true,
+        "language": true,
+        "incident": true,
+        "retrieval": true,
+        "no_financial_tools": true,
+        "reply_guards": true,
+        "customer_sentiment": true,
+        "workaround_prerequisite": true
+      },
+      "actual": {
+        "urgency": "low",
+        "extracted": {
+          "product_area": "availability",
+          "issue_type": "outage",
+          "sentiment": "neutral",
+          "language": "th"
+        },
+        "action": "escalate_to_human",
+        "specialist": null,
+        "reasons": [
+          "Evidence is incomplete, uncertain, or high-impact; human review is needed."
+        ],
+        "knowledge_ids": [
+          "availability"
+        ],
+        "incident_allowed": false,
+        "tools_called": [
+          "search_knowledge_base"
+        ],
+        "policy_version": "policy-v3"
+      },
+      "turns": [
+        {
+          "reply": "การที่ระบบขึ้น error 500 และมีปัญหากับหลายเครื่องพร้อมกัน อาจเป็นสัญญาณของปัญหาในภูมิภาค Asia แม้ว่าสถานะบน status.company.com จะแสดงว่าระบบปกติ แนะนำให้เตรียมแผนสำรองสำหรับการประชุมกับลูกค้าและติดตามสถานการณ์อย่างใกล้ชิด ขณะนี้ได้มีการบันทึกปัญหาไว้ในระบบแล้วเพื่อเร่งตรวจสอบต่อไปค่ะ",
+          "response_language": "th",
+          "reply_source": "model",
+          "guards_passed": true,
+          "decision": {
+            "urgency": "critical",
+            "extracted": {
+              "product_area": "availability",
+              "issue_type": "outage",
+              "sentiment": "frustrated",
+              "language": "th"
+            },
+            "action": "escalate_to_human",
+            "specialist": null,
+            "reasons": [
+              "Ongoing loss of core service reported by multiple users; open a simulated incident for human investigation."
+            ],
+            "knowledge_ids": [
+              "availability"
+            ],
+            "incident_allowed": true,
+            "tools_called": [
+              "search_knowledge_base",
+              "open_incident"
+            ],
+            "policy_version": "policy-v3"
+          }
+        },
+        {
+          "reply": "ลูกค้าแจ้งว่าระบบมีปัญหา error 500 ไม่สามารถเข้าใช้งานได้ในหลายเบราว์เซอร์และเครื่องมือ โดยทีมงานตรวจสอบสถานะระบบแล้วรายงานว่า \"all systems operational\" แต่ลูกค้ายืนยันว่าปัญหาเกิดขึ้นจริงในภูมิภาค Asia ซึ่งตรงกับรายงานใน FAQ ว่าสถานะบนหน้า status page อาจไม่สะท้อนความผิดปกติในระดับภูมิภาคได้เหมือนกัน ตอนนี้ลูกค้าแจ้งว่าปัญหาได้รับการแก้ไขแล้ว ขอให้ติดตามสถานะและความพร้อมใช้งานอย่างใกล้ชิดต่อไป แนะนำให้มีช่องทางติดต่อฉุกเฉินหากเกิดเหตุซ้ำซ้อนในอนาคต  \n\nเรื่องนี้ควรติดตามเพื่อลดผลกระทบกับลูกค้าองค์กรและดีลสำคัญในอนาคตตามความเห็นใน FAQ [availability]",
+          "response_language": "th",
+          "reply_source": "model",
+          "guards_passed": true,
+          "decision": {
+            "urgency": "low",
+            "extracted": {
+              "product_area": "availability",
+              "issue_type": "outage",
+              "sentiment": "neutral",
+              "language": "th"
+            },
+            "action": "escalate_to_human",
+            "specialist": null,
+            "reasons": [
+              "Evidence is incomplete, uncertain, or high-impact; human review is needed."
+            ],
+            "knowledge_ids": [
+              "availability"
+            ],
+            "incident_allowed": false,
+            "tools_called": [
+              "search_knowledge_base"
+            ],
+            "policy_version": "policy-v3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "theme-followup-en",
+      "passed": true,
+      "latency_ms": 7028,
+      "checks": {
+        "urgency": true,
+        "action": true,
+        "language": true,
+        "incident": true,
+        "retrieval": true,
+        "no_financial_tools": true,
+        "reply_guards": true,
+        "customer_sentiment": true,
+        "workaround_prerequisite": true
+      },
+      "actual": {
+        "urgency": "medium",
+        "extracted": {
+          "product_area": "appearance",
+          "issue_type": "bug",
+          "sentiment": "neutral",
+          "language": "en"
+        },
+        "action": "route_to_specialist",
+        "specialist": "engineering",
+        "reasons": [
+          "An unresolved bug needs investigation even when the latest message also asks for a feature."
+        ],
+        "knowledge_ids": [
+          "appearance",
+          "theme-schedule"
+        ],
+        "incident_allowed": false,
+        "tools_called": [
+          "search_knowledge_base"
+        ],
+        "policy_version": "policy-v3"
+      },
+      "turns": [
+        {
+          "reply": "If your Mac is set to dark mode but the app remains in light mode even when you select System Default, this appears to be a bug. To assist further, it would help to know your app version and macOS version. Meanwhile, you may continue to use the Light theme setting. Reporting this issue to engineering is advisable for resolution.",
+          "response_language": "en",
+          "reply_source": "model",
+          "guards_passed": true,
+          "decision": {
+            "urgency": "medium",
+            "extracted": {
+              "product_area": "appearance",
+              "issue_type": "bug",
+              "sentiment": "neutral",
+              "language": "en"
+            },
+            "action": "route_to_specialist",
+            "specialist": "engineering",
+            "reasons": [
+              "An unresolved bug needs investigation even when the latest message also asks for a feature."
+            ],
+            "knowledge_ids": [
+              "appearance"
+            ],
+            "incident_allowed": false,
+            "tools_called": [
+              "search_knowledge_base"
+            ],
+            "policy_version": "policy-v3"
+          }
+        },
+        {
+          "reply": "If the app's theme does not switch to dark mode when set to System Default on your Mac, this is known to be a bug and should be reported to engineering with your app and OS versions. Regarding scheduling dark mode to turn on at 6pm, the product does not currently support native theme scheduling; it relies on the OS's appearance settings but only if System Default functions correctly. I recommend checking your Mac's system appearance schedule as a workaround, provided the app's System Default theme issue is resolved.",
+          "response_language": "en",
+          "reply_source": "model",
+          "guards_passed": true,
+          "decision": {
+            "urgency": "medium",
+            "extracted": {
+              "product_area": "appearance",
+              "issue_type": "bug",
+              "sentiment": "neutral",
+              "language": "en"
+            },
+            "action": "route_to_specialist",
+            "specialist": "engineering",
+            "reasons": [
+              "An unresolved bug needs investigation even when the latest message also asks for a feature."
+            ],
+            "knowledge_ids": [
+              "appearance",
+              "theme-schedule"
+            ],
+            "incident_allowed": false,
+            "tools_called": [
+              "search_knowledge_base"
+            ],
+            "policy_version": "policy-v3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "operator-language",
+      "passed": true,
+      "latency_ms": 6962,
+      "checks": {
+        "urgency": true,
+        "action": true,
+        "language": true,
+        "incident": true,
+        "retrieval": true,
+        "no_financial_tools": true,
+        "reply_guards": true,
+        "customer_sentiment": true,
+        "workaround_prerequisite": true
+      },
+      "actual": {
+        "urgency": "high",
+        "extracted": {
+          "product_area": "billing",
+          "issue_type": "billing",
+          "sentiment": "angry",
+          "language": "en"
+        },
+        "action": "route_to_specialist",
+        "specialist": "billing",
+        "reasons": [
+          "Financial exposure requires billing verification; pending charges are not proof of settled payments. No financial action is authorized."
+        ],
+        "knowledge_ids": [
+          "billing-pending",
+          "billing-access"
+        ],
+        "incident_allowed": false,
+        "tools_called": [
+          "search_knowledge_base"
+        ],
+        "policy_version": "policy-v3"
+      },
+      "turns": [
+        {
+          "reply": "It appears your payment attempts created multiple pending authorizations, which are not confirmed charges, and that's why Pro access is not active. I recommend contacting billing support with your account email and payment references to verify charges and restore your access properly. They can also help resolve duplicate charge holds after verification. Please avoid attempting payment again until this is clarified to prevent additional holds.",
+          "response_language": "en",
+          "reply_source": "model",
+          "guards_passed": true,
+          "decision": {
+            "urgency": "high",
+            "extracted": {
+              "product_area": "billing",
+              "issue_type": "billing",
+              "sentiment": "angry",
+              "language": "en"
+            },
+            "action": "route_to_specialist",
+            "specialist": "billing",
+            "reasons": [
+              "Financial exposure requires billing verification; pending charges are not proof of settled payments. No financial action is authorized."
+            ],
+            "knowledge_ids": [
+              "billing-access",
+              "billing-pending"
+            ],
+            "incident_allowed": false,
+            "tools_called": [
+              "search_knowledge_base"
+            ],
+            "policy_version": "policy-v3"
+          }
+        },
+        {
+          "reply": "ลูกค้ารายงานว่าการชำระเงินล้มเหลวและมีการคิดเงินซ้ำสามครั้งแต่ยังไม่ได้รับสิทธิ์ Pro แนะนำให้เจ้าหน้าที่ฝ่ายบิลลิ่งตรวจสอบบันทึกชำระเงินอย่างละเอียดเพื่อยืนยันสถานะการชำระเงินและสิทธิ์การใช้งาน เนื่องจากการเปิดใช้งานอาจไม่แสดงทันทีหากบันทึกยังไม่ตรงกันและการเรียกเก็บเงินซ้ำอาจเป็นการถือบัตรที่ยังไม่เสร็จสมบูรณ์ ซึ่งต้องมีการประสานงานเพื่อเคลียร์ข้อมูลก่อนจะดำเนินการถัดไปได้ครับ",
+          "response_language": "th",
+          "reply_source": "model",
+          "guards_passed": true,
+          "decision": {
+            "urgency": "high",
+            "extracted": {
+              "product_area": "billing",
+              "issue_type": "billing",
+              "sentiment": "angry",
+              "language": "en"
+            },
+            "action": "route_to_specialist",
+            "specialist": "billing",
+            "reasons": [
+              "Financial exposure requires billing verification; pending charges are not proof of settled payments. No financial action is authorized."
+            ],
+            "knowledge_ids": [
+              "billing-pending",
+              "billing-access"
+            ],
+            "incident_allowed": false,
+            "tools_called": [
+              "search_knowledge_base"
+            ],
+            "policy_version": "policy-v3"
+          }
+        }
+      ]
+    }
+  ]
+}

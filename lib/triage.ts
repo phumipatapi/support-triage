@@ -13,11 +13,13 @@ import {
 import { decide } from "./policy";
 import {
   buildQuestions,
+  assessmentContext,
   faqs,
   validateAssessment,
   type Models,
 } from "./models";
-import { PROMPT_VERSION } from "./prompts";
+import { PROMPT_VERSION, REPLY_PROMPT_VERSION } from "./prompts";
+import { replyContext } from "./reply-context";
 import {
   executeIncident,
   toolDefinitions,
@@ -80,12 +82,11 @@ export class TriageService {
           provider: this.models.name,
         });
         this.store.audit(run.id, "model.input", {
-          conversation: state,
-          faq: faqs,
+          ...assessmentContext(state),
+          prompt_version: PROMPT_VERSION,
           ...(this.models.name === "jev"
             ? {
                 model_request_questions: buildQuestions(),
-                prompt_version: PROMPT_VERSION,
               }
             : {}),
         });
@@ -104,7 +105,10 @@ export class TriageService {
         });
         this.store.checkpoint(run, assessment, decision);
       }
-      let incident: IncidentOutput | null = null;
+      // An existing incident remains a fact on later turns, even if no new side effect is allowed.
+      let incident: IncidentOutput | null = this.store.existingIncident(
+        run.conversation_id,
+      );
       if (decision.incident_allowed) {
         incident = await executeIncident(
           this.store,
@@ -115,9 +119,21 @@ export class TriageService {
         if (!decision.tools_called.includes("open_incident"))
           decision.tools_called.push("open_incident");
         this.store.checkpoint(run, assessment, decision);
+      } else if (incident) {
+        this.store.audit(run.id, "incident.retained", {
+          result: incident,
+          source: "previous_run",
+          tool_executed: false,
+        });
       }
       this.store.assertOwner(run);
-      const reply = await this.models.reply({ state, decision, incident });
+      const replyInput = { state, decision, incident };
+      this.store.audit(run.id, "model.reply_input", {
+        ...replyContext(replyInput),
+        faq: faqs.filter((faq) => decision.knowledge_ids.includes(faq.id)),
+        reply_prompt_version: REPLY_PROMPT_VERSION,
+      });
+      const reply = await this.models.reply(replyInput);
       this.store.assertOwner(run);
       this.store.audit(run.id, "model.replied", { ...reply });
       const body = {
@@ -129,6 +145,7 @@ export class TriageService {
         incident,
         mode: this.models.name,
         reply_provider: reply.metadata.provider,
+        reply_source: reply.metadata.reply_source ?? "mock",
       };
       this.store.complete(run, decision, body, reply.reply);
       return { body, status: conversationId ? 200 : 201, replay: false };

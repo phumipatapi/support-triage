@@ -109,5 +109,41 @@
       "incident": false,
       "faq": null
     }
+  },
+  {
+    "content": "My Mac is in dark mode, but the app stays light even after selecting System Default.",
+    "turns": [
+      {
+        "role": "customer",
+        "content": "Also, can I schedule dark mode to turn on at 6pm?"
+      }
+    ],
+    "id": "theme-followup-en",
+    "expected": {
+      "action": "route_to_specialist",
+      "urgency": "medium",
+      "faq": "appearance",
+      "incident": false,
+      "language": "en"
+    },
+    "check_workaround": true
+  },
+  {
+    "content": "This is ridiculous! My payment failed and I have three duplicate charges but no Pro access.",
+    "turns": [
+      {
+        "role": "operator",
+        "content": "ช่วยสรุปสิ่งที่เกิดขึ้นและสิ่งที่ยังต้องตรวจสอบ ขอบคุณครับ"
+      }
+    ],
+    "id": "operator-language",
+    "expected": {
+      "action": "route_to_specialist",
+      "urgency": "high",
+      "faq": "billing-pending",
+      "sentiment": "angry",
+      "language": "en",
+      "incident": false
+    }
   }
 ]

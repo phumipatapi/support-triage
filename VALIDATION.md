@@ -1,21 +1,59 @@
 # Validation record
 
-Environment: Windows, Node.js 22.23.1, npm 10.9.0. Validated locally on 2026-09-21.
+Measured on **2026-09-23**, Windows, Node.js 22.23.1 / npm 10.9.0. This is a bounded take-home service, not a production readiness certification. Prompt versions: `triage-v3`, `reply-v3`; policy: `policy-v3`.
 
-- TypeScript validation and production Next.js build: passed.
-- Deterministic tests: policy and permissions; provider HTTP contracts; request validation; simultaneous duplicates; idempotency conflicts; durable history; failure before provider commit; timeout after provider commit; reply failure after a successful effect; blocking a new turn while recovery is pending.
-- Real HTTP smoke: starts a production server, receives 503 after a simulated remote commit, stops and restarts the process, retries to recover the original incident, replays the saved response, continues the conversation, and checks one side effect in the persisted audit.
-- Offline eval: ten labelled scenarios passed with the **mock baseline**. This is a check of the eval harness and policy flow, not evidence of Jev/GPT accuracy. Synthetic mock latency is not a model latency measurement.
-- API credentials were not available during implementation. No live Jev or GPT calls were made; live provider availability, Thai understanding, grounding and cost remain unverified. Run `npm run eval -- --live` with configured credentials to measure them.
+## Service verification
 
-Commands: `npm run check`, `npm run smoke`, `npm run eval`. For exact current results, rerun these commands; generated eval reports are deliberately excluded from Git.
+| Check | Result |
+| --- | --- |
+| `npm run check` | TypeScript, **63 deterministic tests**, and Express production bundle passed |
+| `npm run smoke` | Real HTTP process, setup selection, terminal sessions, restart persistence and uncertain-side-effect recovery passed |
+| `npm run eval` | **12/12 offline mock cases** passed; not model-accuracy evidence |
+| `npm audit` | 0 reported vulnerabilities in runtime and development dependencies at this snapshot |
+| Write-up | Markdown and visually inspected two-page PDF contain the same content |
 
-2026-09-22: Reviewed Jev using the installed official TypeSafe skill and live API/primitives/cookbook docs. Added tests for branch-specific confidence, answer sufficiency on selected FAQ, Choice consistency and rate-limit backoff. See `JEV-REVIEW.md`. Live credentials remain unavailable.
+The tests exercise classification policy, autonomy thresholds, provider schemas, role/language isolation, malformed HTTP, concurrency, payload/key conflicts, stale-worker ownership, durable replay, failed/unknown tool outcomes and incident retention on later turns. They also verify that a rejected draft can become a marked policy handoff, retains provider metadata in the audit, replays identically and does not repeat its incident or model call.
 
-Subsequent checks: a supplied Jev key successfully assessed all three sample tickets using `jev-1.13.0`; raw sanitized results are delivered separately in `jev-live-report.json`. This did not test generated replies or execute incidents. Added a Z.AI General API GLM reply adapter with fixture tests for credentials, wire format, JSON validation, citation restrictions, incomplete output and rate limits. GLM live quality remains unverified until a GLM key is configured.
+The smoke test uses isolated temporary databases. It makes the mock incident provider commit before losing its acknowledgement, restarts the server, retries the same request, and observes one incident. It also closes/reopens the terminal client with a pending request and verifies same-key recovery. Setup preserves existing credentials and chooses OpenAI for an injected key; no live key is required for these checks.
 
-2026-09-22: Live Jev + Z.AI General API GLM validation completed on the three supplied sample tickets using isolated temporary databases and mocked incident effects. The first run exposed unsupported claims of routing and verified payment status in generated prose. Updated the GLM reply prompt to provide explicit execution facts, omit internal decision reasons, and require recommendation/uncertainty wording. The second run produced grounded replies in the three inspected samples; prompt rules are not a guarantee of grounding on unseen inputs.
+## Live provider measurements
 
-Final observed end-to-end latency: billing 8.1 s, Thai outage 10.5 s, theme bug 7.6 s. Jev took about 1.0-1.1 s; GLM took 6.6-9.5 s. Models reported: jev-1.13.0 and glm-4.7. Billing was high priority and recommended billing routing; theme bug was medium priority and recommended engineering routing. The outage was critical but urgency confidence 0.71 was below the policy threshold 0.75, so it required human review and created no incident. This is a limited three-case observation, not a passed model accuracy benchmark or proof of the assignment's expected automatic incident behavior.
+These are the final complete live runs against the 12 authored cases, including 15 conversation turns per mode. They use isolated databases and simulated incident effects. The three supplied assignment threads and the English-follow-up/Thai-operator regressions passed the automated checks in both modes.
 
-Sanitized latest output: ../jev-glm-live-report.json. Initial output retained separately for comparison. After the prompt change, TypeScript, all 41 tests, production build and the restart/idempotency HTTP smoke test passed. Local environment now selects Jev decisions and GLM replies; default example configuration remains offline mock mode. Live OpenAI reviewer-mode validation remains outstanding.
+| Mode | Cases passing every assertion | Urgency | Action | Customer language | Incident | Policy fallback turns | Case p50 / p95 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| OpenAI assessment + OpenAI reply | **11/12** | 12/12 | 11/12 | 12/12 | 12/12 | 0 | 3,982 / 9,489 ms |
+| Jev assessment + OpenAI reply | **10/12** | 12/12 | 10/12 | 12/12 | 12/12 | 0 | 2,250 / 4,704 ms |
+
+Reported models were `gpt-4.1-mini-2025-04-14` and `jev-1.13.0`. Configured aliases were `gpt-4.1-mini` and `jev-latest`. Snapshots retain timestamps, per-case replies/checks, model usage and latency: [OpenAI](docs/evaluation/openai-openai.json), [Jev + OpenAI](docs/evaluation/jev-openai.json), [offline baseline](docs/evaluation/offline.json).
+
+Latency is measured per **case**, including any follow-up turns, not per HTTP request. The sample is tiny, was used repeatedly during development, and is not held out. Runs are stochastic; these observations do not establish a speed/cost advantage, calibrated confidence or general accuracy. The live commands correctly exit nonzero when any assertion fails. Fallback count is separate: a safe template is not a successful generated answer.
+
+### Remaining assertion differences
+
+- OpenAI sent the single-user access failure to **engineering** rather than the expected general human escalation. Urgency remained high and no incident was created. Both choices require a human, but the strict action label failed.
+- Jev escalated the simple Thai theme question instead of auto-responding because the evidence did not pass the configured sufficiency gate.
+- Jev sent the injected refund request to general human review instead of billing because classification confidence was below threshold. It did not authorize a refund. Thresholds were not weakened to make the score pass.
+
+### Manual prose review: limitations that assertions miss
+
+Passing assertions does **not** establish fully grounded answers. In the final snapshots, OpenAI billing describes reported entries too confidently as unsettled holds and suggests reconciliation is needed before disputing with a bank. The latter paraphrase is not caught by the narrow imperative-pattern guard. A reply also attributes a status-page check to a team when only the customer reported checking it. Jev + OpenAI sometimes adds general advice (waiting for updates or updating software) beyond the FAQ and calls the reported theme behavior a known issue without evidence of an existing engineering investigation.
+
+Earlier iterations produced Thai replies to English follow-ups, false promises of team contact, and imperative advice to delay bank disputes. Role-aware language context and bounded guards now address those observed forms; rejected English/Thai drafts for already-approved handoffs can use a deterministic advisory with `reply_source: policy_fallback` and an audited rejection code. This is deliberately not a semantic verifier. Other languages, paraphrases, explanations of financial state, response completeness and the exact 100-word/600-character prompt target remain imperfect. Human review and a larger held-out grounding evaluation are needed before customer-facing production use.
+
+No payment, refund, account mutation, email or paging capability exists. A risky reply cannot execute those actions. A real incident provider must independently honor the same durable operation-key contract as the mock. Authentication, deployment, incident lifecycle, cross-ticket correlation and recovery cancellation remain out of scope.
+
+## Requirement coverage
+
+| Assignment requirement | Implementation/evidence |
+| --- | --- |
+| Versioned system prompt, structured triage | `lib/prompts.ts`, `lib/schemas.ts`, `lib/policy.ts` |
+| At least two tools and a durable side effect | `search_knowledge_base`, `open_incident`; separate incident SQLite store in `lib/tools.ts` |
+| Conversational HTTP API and readback audit | `server.ts`, `lib/http.ts`, persisted messages/runs/tool events |
+| Restart persistence and safe retries | `lib/db.ts`, `lib/triage.ts`; concurrency/replay tests and real-process smoke |
+| Code-owned autonomy boundary | Policy gates; no financial/notification execution tool |
+| Tests, offline labels and observability | `tests/`, `evals/`, structured logs and SQLite audit |
+| OpenAI key supplied by reviewer | `npm run setup:openai`; environment key, no TypeSafe requirement |
+| Setup/run instructions and two-page write-up | `README.md`, `WRITEUP.md`, `WRITEUP.pdf` |
+
+The submission ZIP includes source and Git history. Local credentials, databases, chat history, dependencies and build output are excluded.

@@ -11,6 +11,7 @@ import { MockIncidentProvider } from "../lib/tools";
 import { TriageService } from "../lib/triage";
 import { handle } from "../lib/http";
 import { AppError } from "../lib/errors";
+import { finalizeReply } from "../lib/reply-context";
 
 const cleanup: (() => void)[] = [];
 afterEach(() => {
@@ -75,6 +76,51 @@ describe("durable workflow", () => {
     await expect(
       service.submit(samples[0].ticket, "same"),
     ).rejects.toMatchObject({ status: 409, code: "idempotency_conflict" });
+  });
+  it("persists a guarded fallback after an incident and replays it without repeating work", async () => {
+    const replyCalls = vi.fn();
+    const { service, store, provider } = setup("normal", (models) => ({
+      ...models,
+      reply: async (input) => {
+        replyCalls();
+        const { validation, ...reply } = finalizeReply(
+          {
+            reply: "เรากำลังส่งเรื่องให้ทีมตรวจสอบ",
+            citation_ids: ["availability"],
+          },
+          input,
+        );
+        return {
+          ...reply,
+          metadata: {
+            provider: "openai",
+            model: "test-reply-model",
+            usage: { input_tokens: 100, output_tokens: 20, total_tokens: 120 },
+            ...validation,
+          },
+        };
+      },
+    }));
+    const first = await service.submit(outage, "fallback-replay");
+    const replay = await service.submit(outage, "fallback-replay");
+    expect(first.body.reply_source).toBe("policy_fallback");
+    expect(first.body.incident).toMatchObject({ status: "open", simulated: true });
+    expect(first.body.citation_ids).toEqual([]);
+    expect(first.body.reply).not.toContain("เรากำลังส่งเรื่อง");
+    expect(replay.replay).toBe(true);
+    expect(replay.body).toEqual(first.body);
+    expect(replyCalls).toHaveBeenCalledTimes(1);
+    expect(provider.db.prepare("SELECT COUNT(*) n FROM incidents").get()).toEqual({ n: 1 });
+    const audit = store.db.prepare("SELECT data FROM audit WHERE run_id=? AND event='model.replied'")
+      .all(first.body.run_id) as { data: string }[];
+    expect(audit).toHaveLength(1);
+    expect(JSON.parse(audit[0].data).metadata).toMatchObject({
+      provider: "openai",
+      model: "test-reply-model",
+      usage: { input_tokens: 100, output_tokens: 20, total_tokens: 120 },
+      reply_source: "policy_fallback",
+      rejected_draft_code: "unsupported_reply_claim",
+    });
   });
   it("recovers from remote commit followed by timeout, retaining the same incident", async () => {
     const { service, store, provider } = setup("timeout_after_commit");
@@ -196,6 +242,74 @@ describe("durable workflow", () => {
       provider.db.prepare("SELECT COUNT(*) n FROM incidents").get(),
     ).toEqual({ n: 1 });
   });
+  it("retains an existing incident when a follow-up no longer permits creating one", async () => {
+    let assessments = 0;
+    const reply = vi.fn();
+    const { service, store, provider } = setup("normal", (m) => ({
+      ...m,
+      assess: async (state) => {
+        const result = await m.assess(state);
+        if (++assessments > 1) {
+          result.assessment.ongoing_outage = 0;
+          result.assessment.core_work_blocked = 0;
+          result.assessment.urgency = "low";
+        }
+        return result;
+      },
+      reply: async (input) => {
+        reply(input);
+        return m.reply(input);
+      },
+    }));
+    const first = await service.submit(outage, "incident-start");
+    const next = await service.submit(
+      {
+        role: "customer",
+        content: "Everyone can access the app again. What happened?",
+      },
+      "incident-resolved",
+      first.body.conversation_id,
+    );
+    expect(next.body.decision.incident_allowed).toBe(false);
+    expect(next.body.decision.tools_called).not.toContain("open_incident");
+    expect(next.body.incident).toEqual(first.body.incident);
+    expect(reply.mock.calls[1][0].incident).toEqual(first.body.incident);
+    expect(store.db.prepare("SELECT attempts FROM side_effects").get()).toEqual(
+      { attempts: 1 },
+    );
+    expect(
+      provider.db.prepare("SELECT COUNT(*) n FROM incidents").get(),
+    ).toEqual({ n: 1 });
+    const retained = store
+      .history(first.body.conversation_id)
+      .audit.find(
+        (entry: Record<string, unknown>) => entry.event === "incident.retained",
+      );
+    expect(retained?.data).toMatchObject({
+      source: "previous_run",
+      tool_executed: false,
+    });
+  });
+  it("fences a stale worker without falsely auditing the replacement as retryable", async () => {
+    const { service, store } = setup();
+    const ticket = (await import("../lib/schemas")).Ticket.parse(outage);
+    const { run: stale } = store.begin("ticket", "fenced", ticket);
+    store.db
+      .prepare("UPDATE runs SET lease_until=? WHERE id=?")
+      .run(Date.now() - 1, stale.id);
+    await service.submit(outage, "fenced");
+    expect(() => store.assertOwner(stale)).toThrowError(
+      "This run lease expired",
+    );
+    store.fail(stale, "late_worker_failure");
+    expect(store.run(stale.id).status).toBe("completed");
+    expect(
+      store.db
+        .prepare("SELECT COUNT(*) n FROM audit WHERE event='run.retryable'")
+        .get(),
+    ).toEqual({ n: 0 });
+    expect(store.state(stale.conversation_id).messages).toHaveLength(5);
+  });
   it("blocks a new turn while a failed run is unresolved", async () => {
     const { service, store } = setup("fail_before_commit");
     await expect(service.submit(outage, "pending")).rejects.toMatchObject({
@@ -272,6 +386,15 @@ describe("HTTP contract", () => {
       });
     expect(
       (await handle(request("{}", {}), undefined, () => service)).status,
+    ).toBe(415);
+    expect(
+      (
+        await handle(
+          request("{}", { "content-type": "application/json-invalid" }),
+          undefined,
+          () => service,
+        )
+      ).status,
     ).toBe(415);
     expect((await handle(request("{"), undefined, () => service)).status).toBe(
       400,

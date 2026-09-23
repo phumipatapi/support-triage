@@ -6,3 +6,4 @@ storage/
 *.tsbuildinfo
 evals/reports/
 coverage/
+dist/

@@ -21,6 +21,22 @@ const assessment = (override: Partial<AssessmentData>) => ({
   ...override,
 });
 describe("autonomy policy", () => {
+  it("keeps a single-user service loss high without inventing widespread scope", () => {
+    expect(
+      decide(
+        assessment({
+          urgency: "critical",
+          ongoing_outage: 0.95,
+          core_work_blocked: 0.95,
+          multiple_users: 0.1,
+        }),
+      ),
+    ).toMatchObject({
+      urgency: "high",
+      incident_allowed: false,
+      action: "escalate_to_human",
+    });
+  });
   it("does not auto-respond based only on FAQ relevance", () => {
     expect(decide(assessment({ knowledge_sufficient: 0.3 })).action).toBe(
       "escalate_to_human",

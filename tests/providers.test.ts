@@ -217,6 +217,22 @@ describe("Jev wire contract (simulated HTTP, not live model evaluation)", () => 
 });
 
 function openaiResponse(value: unknown, status = "completed") {
+  if (
+    value &&
+    typeof value === "object" &&
+    "faq_scores" in value &&
+    Array.isArray(value.faq_scores)
+  ) {
+    value = {
+      ...value,
+      faq_scores: Object.fromEntries(
+        value.faq_scores.map((f: { id: string; relevance: number }) => [
+          f.id,
+          f.relevance,
+        ]),
+      ),
+    };
+  }
   return Response.json({
     id: "resp_fixture",
     object: "response",
