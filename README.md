@@ -170,3 +170,5 @@ The harness evaluates the same authored labels, including multi-turn regressions
 | `tests/`, `evals/`, `scripts/` | Tests, labelled eval and runnable clients |
 
 Structured stdout logs include request/run/audit IDs. Detailed input, model judgments, selected documents, decisions and tool outcomes are persisted in SQLite and exposed by the history endpoint. Stored conversations contain customer text; use only test data in this unauthenticated local service. Read [WRITEUP.md](WRITEUP.md) or the [two-page PDF](WRITEUP.pdf) for architecture choices, sample-specific failure analysis and production evaluation plans.
+
+A [Thai translation of the write-up](docs/WRITEUP.th.md) is included for reference.

@@ -96,4 +96,4 @@ npm run eval
 
 `npm run demo -- theme-bug-thread` ใช้บทสนทนาที่เตรียมไว้และทดสอบส่งซ้ำอัตโนมัติ แต่ `npm run chat` เหมาะกับข้อความที่พิมพ์เอง
 
-อ่านขั้นตอนสำหรับผู้ตรวจและ API ที่ [README.md](README.md), ผลตรวจที่ [VALIDATION.md](VALIDATION.md) และเหตุผลการออกแบบสำหรับส่งงานที่ [WRITEUP.md](WRITEUP.md)
+อ่านขั้นตอนสำหรับผู้ตรวจและ API ที่ [README.md](README.md), ผลตรวจที่ [VALIDATION.md](VALIDATION.md) และเหตุผลการออกแบบสำหรับส่งงานที่ [WRITEUP.md](WRITEUP.md) หรือ [คำแปลภาษาไทย](docs/WRITEUP.th.md)
